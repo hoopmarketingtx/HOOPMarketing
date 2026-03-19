@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { createPageUrl } from './utils';
-const headerLogo = '/assets/HOOP-Marketing-Logo-2.png';
+import headerLogo from './assets/HOOP-Marketing-Logo-2.png';
 
 const navLinks = [
   { name: 'Services', href: '#services' },

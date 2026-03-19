@@ -1,7 +1,12 @@
 import { motion } from 'framer-motion';
-import { Instagram } from 'lucide-react';
+import { Instagram, Linkedin, Twitter, Facebook } from 'lucide-react';
 
-const hoopLogo = '/assets/HOOP-Marketing-Logo-2.png';
+const socialLinks = [
+  { icon: Instagram, href: '#' },
+  { icon: Linkedin, href: '#' },
+  { icon: Twitter, href: '#' },
+  { icon: Facebook, href: '#' }
+];
 
 export default function Footer() {
   return (
@@ -16,7 +21,7 @@ export default function Footer() {
               className="flex flex-col md:flex-row items-start md:items-center gap-6"
             >
               <img 
-                src={hoopLogo} 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69667ed36b3adcd6c969a3be/9612bec6e_HOOP-Marketing-Logo-2.png" 
                 alt="HOOP Marketing" 
                 className="h-32 w-auto"
               />
@@ -26,15 +31,17 @@ export default function Footer() {
               </p>
             </motion.div>
 
-            <a
-              href="https://www.instagram.com/hoopmarketingtx"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-white/5 hover:bg-gradient-to-r hover:from-[#00B8E6] hover:to-[#1F4E5F] text-white/60 hover:text-white transition-all duration-300 rounded-xl px-4 py-2.5"
-            >
-              <Instagram className="w-5 h-5 flex-shrink-0" />
-              <span className="text-sm font-medium">@hoopmarketingtx</span>
-            </a>
+            <div className="flex gap-4">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center text-white/60 hover:bg-gradient-to-r hover:from-[#00B8E6] hover:to-[#1F4E5F] hover:text-white transition-all duration-300"
+                >
+                  <social.icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
           </div>
 
           <div className="mt-12">

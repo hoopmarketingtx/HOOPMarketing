@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ArrowLeft, CheckCircle2, Mail } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -97,19 +97,21 @@ export default function Contact() {
             <p className="text-xl text-white/60 mt-8 max-w-lg">
               We take on a limited number of projects each month to stay hands-on and strategic. If it looks like a strong fit, you'll hear from us within 24–48 hours.
             </p>
-            <div className="mt-12">
-              <a
-                href="mailto:hoopmarketing@gmail.com"
-                className="inline-flex items-center gap-4 text-white/80 group rounded-2xl px-4 py-3 -mx-4 transition-all duration-300 hover:bg-white/5 hover:text-white"
-              >
-                <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:bg-[#00B8E6]/20 group-hover:scale-110">
-                  <Mail className="w-5 h-5 text-[#00B8E6]" />
+            <div className="mt-12 flex flex-wrap gap-6">
+              {[
+                { icon: Mail, label: 'Email Us', value: 'hello@hoopmarketing.com' },
+                { icon: Phone, label: 'Call Us', value: '(512) 555-0123' },
+              ].map(({ icon: Icon, label, value }) => (
+                <div key={label} className="flex items-center gap-4 text-white/80">
+                  <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center">
+                    <Icon className="w-5 h-5 text-[#00B8E6]" />
+                  </div>
+                  <div>
+                    <div className="text-white/50 text-sm">{label}</div>
+                    <div className="text-white font-medium">{value}</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-white/50 text-sm transition-colors duration-300 group-hover:text-[#00B8E6]/70">Email Us</div>
-                  <div className="text-white font-medium transition-colors duration-300 group-hover:text-[#00B8E6]">hoopmarketing@gmail.com</div>
-                </div>
-              </a>
+              ))}
             </div>
           </motion.div>
 
