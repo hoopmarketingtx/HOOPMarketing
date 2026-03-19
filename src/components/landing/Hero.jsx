@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import logoWide from '../../assets/hoop-logo-wide.png'; // ensure this file exists at src/assets/hoop-logo-wide.png
+
+const logoWide = '/assets/hoop-logo-wide.png';
 
 export default function Hero() {
   return (
