@@ -5,23 +5,17 @@ import { Button } from '@/components/ui/button';
 
 const testimonials = [
   {
-    quote: "HOOP didn't just redesign our brand—they transformed how customers see us. Our revenue jumped 40% in the first quarter after launch.",
-    author: "Marcus Johnson",
-    role: "CEO, Stellar Fitness",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80"
+    quote: "HOOP absolutely nailed our logo system. They didn't just give us a logo. They built a full, professional brand identity that we can confidently use across everything. It gave our business a much more polished and credible look right away.",
+    author: "Lane Newton",
+    role: "Victory Apparatus",
+    logo: "/assets/Victory-Apparatus-Full-Logo.png",
   },
   {
-    quote: "Finally, an agency that gets it. They don't waste time with fluff—just bold ideas and real results. Our best business decision this year.",
-    author: "Sarah Mitchell",
-    role: "Founder, Urban Coffee Co",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80"
+    quote: "Working with HOOP Marketing for our social media has been a game changer. Staying consistent with content used to be a struggle, but now everything is handled for us. Our pages look more professional, engagement has gone up, and we are starting to see real traction from it.",
+    author: "Garrett Wright",
+    role: "TRL Services",
+    logo: "/assets/Thin-Red-Line-Logo-Transparent-Background-HighContrast.png",
   },
-  {
-    quote: "The team at HOOP is relentless. They pushed us out of our comfort zone and delivered a brand that truly stands out in a crowded market.",
-    author: "David Chen",
-    role: "COO, TechFlow SaaS",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80"
-  }
 ];
 
 export default function Testimonials() {
@@ -67,11 +61,13 @@ export default function Testimonials() {
               </p>
 
               <div className="mt-12 flex flex-col items-center">
-                <img
-                  src={testimonials[current].image}
-                  alt={testimonials[current].author}
-                  className="w-16 h-16 rounded-full object-cover border-4 border-[#00B8E6]/20"
-                />
+                <div className="w-20 h-20 rounded-full bg-white border-4 border-[#00B8E6]/20 flex items-center justify-center overflow-hidden p-2">
+                  <img
+                    src={testimonials[current].logo}
+                    alt={testimonials[current].role}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
                 <div className="mt-4">
                   <div className="font-bold text-[#0a0a0a] text-lg">{testimonials[current].author}</div>
                   <div className="text-gray-500">{testimonials[current].role}</div>

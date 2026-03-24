@@ -39,10 +39,10 @@ export default function Hero() {
             </h1>
 
             <p className="text-xl text-white/60 max-w-lg mb-4 leading-relaxed">
-              HOOP Marketing & Graphic Design crafts bold brands and aggressive marketing strategies that make your competitors nervous.
+              HOOP Marketing &amp; Graphic Design builds bold brands and aggressive marketing systems that drive real growth—without the hassle.
             </p>
             <p className="text-lg text-[#00B8E6]/80 font-medium max-w-lg mb-12 italic">
-              "We'll jump through the hoops for you."
+              We'll jump through the hoops for you.
             </p>
 
             <div className="flex flex-wrap gap-4">
