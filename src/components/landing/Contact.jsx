@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ArrowLeft, CheckCircle2, Mail } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, Mail, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -18,12 +18,25 @@ const SERVICES = [
 const BUDGETS = ['Under $1k', '$1k–$2k', '$2k–$5k', '$5k–$10k', 'Not sure yet'];
 const TIMINGS = ['ASAP', 'Within 30 days', '1–3 months', 'Just exploring options'];
 
-const TOTAL_STEPS = 5;
-
-export default function Contact() {
+export default function Contact({ selectedPackage, onClearPackage }) {
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // When a package is pre-selected, skip the services (2) and budget (3) steps
+  const activeSteps = selectedPackage ? [1, 4, 5] : [1, 2, 3, 4, 5];
+  const totalDisplaySteps = activeSteps.length;
+  const displayStep = activeSteps.indexOf(step) + 1;
+
+  const goNext = () => {
+    const idx = activeSteps.indexOf(step);
+    if (idx < activeSteps.length - 1) setStep(activeSteps[idx + 1]);
+  };
+  const goBack = () => {
+    const idx = activeSteps.indexOf(step);
+    if (idx > 0) setStep(activeSteps[idx - 1]);
+  };
+  const isLastStep = activeSteps.indexOf(step) === activeSteps.length - 1;
 
   const [formData, setFormData] = useState({
     name: '',
@@ -56,6 +69,8 @@ export default function Contact() {
       budget: formData.budget,
       timing: formData.timing,
       previousEfforts: formData.previousEfforts,
+      ...(selectedPackage && { selectedPackage: `${selectedPackage.service} — ${selectedPackage.tier} Package`
+        + (selectedPackage.designBrief ? ` | Design: ${selectedPackage.designBrief}` : '') }),
     };
     const response = await fetch('https://formspree.io/f/xlgwkyvr', {
       method: 'POST',
@@ -121,6 +136,23 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-10">
+              {selectedPackage && !submitted && (
+                <div className="flex items-center justify-between bg-[#00B8E6]/10 border border-[#00B8E6]/30 rounded-2xl px-4 py-3 mb-6">
+                  <div>
+                    <p className="text-[#00B8E6] text-xs font-semibold uppercase tracking-wider mb-0.5">Selected Package</p>
+                    <p className="text-white font-semibold text-sm">{selectedPackage.service} — {selectedPackage.tier}</p>
+                    {selectedPackage.designBrief && (
+                      <p className="text-white/50 text-xs mt-0.5">{selectedPackage.designBrief}</p>
+                    )}
+                  </div>
+                  <button
+                    onClick={onClearPackage}
+                    className="w-7 h-7 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white/60 hover:text-white transition-colors flex-shrink-0"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              )}
               {submitted ? (
                 <div className="flex flex-col items-center justify-center py-16 text-center">
                   <CheckCircle2 className="w-16 h-16 text-[#00B8E6] mb-6" />
@@ -134,13 +166,13 @@ export default function Contact() {
                   {/* Progress */}
                   <div className="mb-8">
                     <div className="flex justify-between text-white/40 text-xs mb-2">
-                      <span>Step {step} of {TOTAL_STEPS}</span>
-                      <span>{Math.round((step / TOTAL_STEPS) * 100)}%</span>
+                      <span>Step {displayStep} of {totalDisplaySteps}</span>
+                      <span>{Math.round((displayStep / totalDisplaySteps) * 100)}%</span>
                     </div>
                     <div className="w-full h-1 bg-white/10 rounded-full">
                       <div
                         className="h-1 bg-gradient-to-r from-[#00B8E6] to-[#1F4E5F] rounded-full transition-all duration-500"
-                        style={{ width: `${(step / TOTAL_STEPS) * 100}%` }}
+                        style={{ width: `${(displayStep / totalDisplaySteps) * 100}%` }}
                       />
                     </div>
                   </div>
@@ -254,18 +286,18 @@ export default function Contact() {
 
                   {/* Navigation */}
                   <div className="flex gap-3 mt-8">
-                    {step > 1 && (
+                    {displayStep > 1 && (
                       <Button
                         variant="outline"
-                        onClick={() => setStep(step - 1)}
+                        onClick={goBack}
                         className="bg-white/15 border-white/20 text-white hover:bg-white/25 rounded-xl h-12"
                       >
                         <ArrowLeft className="w-4 h-4 mr-2" /> Back
                       </Button>
                     )}
-                    {step < TOTAL_STEPS ? (
+                    {!isLastStep ? (
                       <Button
-                        onClick={() => setStep(step + 1)}
+                        onClick={goNext}
                         disabled={!canAdvance()}
                         className="flex-1 bg-gradient-to-r from-[#00B8E6] to-[#1F4E5F] hover:opacity-90 text-white h-12 rounded-xl group disabled:opacity-40"
                       >

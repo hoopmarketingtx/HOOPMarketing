@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Hero from '@/components/landing/Hero';
 import Services from '@/components/landing/Services';
 import Portfolio from '@/components/landing/Portfolio';
@@ -7,14 +8,16 @@ import Contact from '@/components/landing/Contact';
 import Footer from '@/components/landing/Footer';
 
 export default function Home() {
+  const [selectedPackage, setSelectedPackage] = useState(null);
+
   return (
     <>
       <Hero />
-      <Services />
+      <Services onSelectPackage={setSelectedPackage} />
       <Portfolio />
       <Testimonials />
       <About />
-      <Contact />
+      <Contact selectedPackage={selectedPackage} onClearPackage={() => setSelectedPackage(null)} />
       <Footer />
     </>
   );
