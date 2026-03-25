@@ -1,21 +1,26 @@
 import { motion } from 'framer-motion';
-import { Award, Users, Target } from 'lucide-react';
+import { ShieldCheck, TrendingUp, MessageSquare, Handshake } from 'lucide-react';
 
 const values = [
   {
-    icon: Target,
-    title: "Results-Obsessed",
-    description: "We measure success by your growth, not by how pretty things look."
+    icon: ShieldCheck,
+    title: "We Handle the Hard Parts",
+    description: "A successful marketing plan has many moving pieces such as strategy, design, content, and advertising. We take it off your plate so you can focus on running your business."
   },
   {
-    icon: Award,
-    title: "No Compromises",
-    description: "We push boundaries and reject mediocrity in everything we create."
+    icon: TrendingUp,
+    title: "Built to Get Results",
+    description: "Everything we do has a purpose. Not just to look good, but to bring in real attention, real engagement, and real customers."
   },
   {
-    icon: Users,
-    title: "True Partnership",
-    description: "Your success is our success. We're invested in your long-term growth."
+    icon: MessageSquare,
+    title: "No Runaround",
+    description: "No confusing reports. No empty updates. We keep things clear, honest, and focused on what actually matters."
+  },
+  {
+    icon: Handshake,
+    title: "In It for the Long Haul",
+    description: "We're not here for quick wins and quick exits. We build long-term partnerships and help you grow over time."
   }
 ];
 
@@ -26,23 +31,28 @@ export default function About() {
         <div className="max-w-3xl mx-auto">
           <span className="text-[#00B8E6] font-semibold tracking-wider uppercase text-sm">About HOOP</span>
           <h2 id="about" className="text-4xl md:text-5xl font-bold text-[#0a0a0a] mt-4 tracking-tight leading-tight" style={{ scrollMarginTop: '100px' }}>
-            We're Not Your
+            Built Different.
             <br />
-            <span className="bg-gradient-to-r from-[#00B8E6] to-[#1F4E5F] bg-clip-text text-transparent">Average Agency</span>
+            <span className="bg-gradient-to-r from-[#00B8E6] to-[#1F4E5F] bg-clip-text text-transparent">Built for You.</span>
           </h2>
 
           <p className="text-xl text-gray-600 mt-8 leading-relaxed">
-            Founded in the heart of Texas, HOOP Marketing & Graphic Design was built on one belief:{' '}
-            <strong className="text-[#0a0a0a]">businesses deserve marketing that actually works.</strong>
+            HOOP Marketing & Graphic Design was built on a foundation of both formal training and hands-on learning. Our founder spent years mastering design, marketing strategy, and business management—including an MBA—before helping small businesses across the DFW area bring their brands to life.
           </p>
 
           <p className="text-lg text-gray-500 mt-4 leading-relaxed">
-            We've spent over a decade helping business owners cut through the noise, dominate their markets,
-            and build brands that command attention. No fluff. No empty promises. Just bold strategies and
-            designs that move the needle.
+            We've delivered plenty of projects, from logos and websites to social media campaigns and paid ads. Every project combines practical know-how with a focus on results that actually matter.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-8 mt-12">
+          <p className="text-lg text-gray-500 mt-4 leading-relaxed">
+            No fluff. No empty promises. Just strategies that work.
+          </p>
+
+          <p className="text-lg text-gray-500 mt-4 leading-relaxed italic">
+            There are a lot of hoops in marketing. We handle them so you don't have to.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-8 mt-12">
             {values.map((value, index) => {
               const Icon = value.icon;
               return (

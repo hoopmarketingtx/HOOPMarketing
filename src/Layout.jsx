@@ -5,7 +5,7 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { createPageUrl } from './utils';
 
-const headerLogo = '/assets/HOOP-Marketing-Logo-2.png';
+const headerLogo = '/assets/HOOP-Abstract-Logo.png';
 
 const navLinks = [
   { name: 'Services', href: '#services' },
@@ -64,13 +64,13 @@ export default function Layout({ children }) {
       >
         <nav className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            <Link to={createPageUrl('Home')} className="flex items-center">
+            <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center py-3">
               <img 
                 src={headerLogo} 
                 alt="HOOP Marketing" 
                 className="h-24 w-auto"
               />
-            </Link>
+            </button>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">

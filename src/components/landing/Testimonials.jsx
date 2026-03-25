@@ -8,12 +8,12 @@ const testimonials = [
     quote: "HOOP absolutely nailed our logo system. They didn't just give us a logo. They built a full, professional brand identity that we can confidently use across everything. It gave our business a much more polished and credible look right away.",
     author: "Lane Newton",
     role: "Victory Apparatus",
-    logo: "/assets/Victory-Apparatus-Full-Logo.png",
+    logo: "/assets/Victory-Apparatus-Abstract-Mark.png",
   },
   {
     quote: "Working with HOOP Marketing for our social media has been a game changer. Staying consistent with content used to be a struggle, but now everything is handled for us. Our pages look more professional, engagement has gone up, and we are starting to see real traction from it.",
     author: "Garrett Wright",
-    role: "TRL Services",
+    role: "Thin Red Line Services",
     logo: "/assets/Thin-Red-Line-Logo-Transparent-Background-HighContrast.png",
   },
 ];

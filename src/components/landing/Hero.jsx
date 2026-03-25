@@ -1,8 +1,130 @@
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const logoWide = '/assets/hoop-logo-wide.png';
+// Each entry is one Instagram carousel post — add more objects for more posts.
+// slides: array of image paths for that post's carousel frames.
+const instagramPosts = [
+  {
+    slides: [
+      '/assets/3.24.26/1.png',
+      '/assets/3.24.26/2.png',
+      '/assets/3.24.26/3.png',
+      '/assets/3.24.26/4.png',
+      '/assets/3.24.26/5.png',
+    ],
+  },
+  {
+    slides: [
+      '/assets/3.16.26/3 Marketing Mistakes 1.png',
+      '/assets/3.16.26/3 Marketing Mistakes 2.png',
+      '/assets/3.16.26/3 Marketing Mistakes 3.png',
+      '/assets/3.16.26/3 Marketing Mistakes 4.png',
+      '/assets/3.16.26/3 Marketing Mistakes 5.png',
+    ],
+  },
+];
+
+function InstagramSlideshow() {
+  const [postIndex, setPostIndex] = useState(0);
+  const [slideIndex, setSlideIndex] = useState(0);
+
+  const post = instagramPosts[postIndex];
+  const totalSlides = post.slides.length;
+
+  // Reset slide when switching posts
+  useEffect(() => {
+    setSlideIndex(0);
+  }, [postIndex]);
+
+  // Auto-advance slides within a post, then move to next post
+  useEffect(() => {
+    const id = setInterval(() => {
+      setSlideIndex((prev) => {
+        if (prev + 1 < totalSlides) return prev + 1;
+        setPostIndex((p) => (p + 1) % instagramPosts.length);
+        return 0;
+      });
+    }, 4000);
+    return () => clearInterval(id);
+  }, [postIndex, totalSlides]);
+
+  return (
+    <div className="relative w-full max-w-sm mx-auto">
+      {/* Phone frame */}
+      <a
+        href="https://www.instagram.com/hoopmarketingtx"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block relative rounded-[2.5rem] border-[6px] border-white/10 bg-[#111] overflow-hidden shadow-2xl hover:border-[#E1306C]/40 transition-colors duration-300"
+      >
+        {/* Instagram header */}
+        <div className="flex items-center gap-2 px-4 py-3 bg-[#111] border-b border-white/10">
+          <Instagram className="w-5 h-5 text-[#E1306C]" />
+          <span className="text-white/80 text-sm font-semibold tracking-wide">@hoopmarketingtx</span>
+          <span className="ml-auto w-2 h-2 bg-[#00B8E6] rounded-full animate-pulse" />
+        </div>
+
+        {/* Post tabs */}
+        <div className="flex border-b border-white/10 bg-[#111]">
+          {instagramPosts.map((_, i) => (
+            <button
+              key={i}
+              onClick={(e) => { e.preventDefault(); setPostIndex(i); setSlideIndex(0); }}
+              className={`flex-1 py-2 text-xs font-semibold transition-all duration-300 ${
+                i === postIndex
+                  ? 'text-[#E1306C] border-b-2 border-[#E1306C]'
+                  : 'text-white/30 hover:text-white/60'
+              }`}
+            >
+              Post {i + 1}
+            </button>
+          ))}
+        </div>
+
+        {/* Slideshow */}
+        <div className="relative overflow-hidden bg-[#0a0a0a]" style={{ aspectRatio: '4/5' }}>
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={`${postIndex}-${slideIndex}`}
+              src={post.slides[slideIndex]}
+              alt={`Post ${postIndex + 1}, slide ${slideIndex + 1}`}
+              initial={{ opacity: 0, scale: 1.04 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.97 }}
+              transition={{ duration: 0.5 }}
+              className="w-full h-full object-cover absolute inset-0"
+            />
+          </AnimatePresence>
+
+          {/* Slide dots (within post) */}
+          {totalSlides > 1 && (
+            <div className="absolute top-3 left-1/2 -translate-x-1/2 flex gap-1">
+              {post.slides.map((_, i) => (
+                <div
+                  key={i}
+                  className={`h-1 rounded-full transition-all duration-300 ${
+                    i === slideIndex ? 'bg-white w-4' : 'bg-white/40 w-2'
+                  }`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Footer */}
+        <div className="px-4 py-3 bg-[#111] flex items-center gap-2">
+          <Instagram className="w-4 h-4 text-[#E1306C]" />
+          <p className="text-white/40 text-xs">Follow us on Instagram</p>
+        </div>
+      </a>
+
+      {/* Glow */}
+      <div className="absolute -inset-4 bg-[#E1306C]/10 rounded-[3rem] blur-2xl -z-10" />
+    </div>
+  );
+}
 
 export default function Hero() {
   return (
@@ -84,23 +206,9 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="relative hidden lg:block"
+            className="relative hidden lg:flex items-center justify-center"
           >
-            <div className="relative aspect-square">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#00B8E6]/30 to-transparent rounded-3xl" />
-              <img
-                src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&q=80"
-                alt="Creative Design"
-                className="w-full h-full object-cover rounded-3xl"
-              />
-              <div className="absolute -bottom-8 -left-8 bg-white p-4 rounded-2xl shadow-2xl">
-                <img 
-                  src={logoWide}
-                  alt="HOOP Marketing"
-                  className="h-16 w-auto"
-                />
-              </div>
-            </div>
+            <InstagramSlideshow />
           </motion.div>
         </div>
       </div>
