@@ -314,6 +314,16 @@ export default function Blog() {
     setActiveSlug(null);
   };
 
+  const openPost = (slug) => {
+    setActiveSlug(slug);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const closePost = () => {
+    setActiveSlug(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
       {/* Hero */}
@@ -348,7 +358,7 @@ export default function Blog() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <AnimatePresence mode="wait">
             {activePost ? (
-              <PostDetail key="detail" post={activePost} onClose={() => setActiveSlug(null)} />
+              <PostDetail key="detail" post={activePost} onClose={closePost} />
             ) : (
               <motion.div
                 key="grid"
@@ -368,7 +378,7 @@ export default function Blog() {
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {filteredPosts.map((post, index) => (
-                    <PostCard key={post.slug} post={post} index={index} onOpen={() => setActiveSlug(post.slug)} />
+                    <PostCard key={post.slug} post={post} index={index} onOpen={() => openPost(post.slug)} />
                   ))}
                 </div>
               </motion.div>

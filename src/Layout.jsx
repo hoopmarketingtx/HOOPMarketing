@@ -33,6 +33,18 @@ export default function Layout({ children }) {
     }
   };
 
+  const navigateToSection = (href) => {
+    setMobileMenuOpen(false);
+    if (isHome) {
+      scrollToSection(href);
+    } else {
+      navigate('/');
+      setTimeout(() => {
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -89,22 +101,14 @@ export default function Layout({ children }) {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
-              {isHome ? navLinks.map((link) => (
+              {navLinks.map((link) => (
                 <button
                   key={link.name}
-                  onClick={() => scrollToSection(link.href)}
+                  onClick={() => navigateToSection(link.href)}
                   className="text-white/70 hover:text-white font-medium transition-colors duration-300"
                 >
                   {link.name}
                 </button>
-              )) : navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={`/${link.href}`}
-                  className="text-white/70 hover:text-white font-medium transition-colors duration-300"
-                >
-                  {link.name}
-                </Link>
               ))}
               <Link
                 to="/Blog"
@@ -147,7 +151,7 @@ export default function Layout({ children }) {
                 {navLinks.map((link) => (
                   <button
                     key={link.name}
-                    onClick={() => isHome ? scrollToSection(link.href) : undefined}
+                    onClick={() => navigateToSection(link.href)}
                     className="block w-full text-left text-white/70 hover:text-white font-medium py-2 transition-colors"
                   >
                     {link.name}
