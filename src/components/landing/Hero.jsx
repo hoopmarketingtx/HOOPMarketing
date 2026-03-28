@@ -151,7 +151,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full mb-8"
             >
               <span className="w-2 h-2 bg-[#00B8E6] rounded-full animate-pulse" />
-              <span className="text-white/70 text-sm tracking-wide">Texas Proud</span>
+              <span className="text-white/70 text-sm tracking-wide">Serving North DFW &amp; Surrounding Areas</span>
             </motion.div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[0.95] tracking-tight mb-8">

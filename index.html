@@ -4,9 +4,104 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="manifest" href="/manifest.json" />
-    <title>HOOP Marketing</title>
+
+    <!-- Primary Meta Tags -->
+    <title>HOOP Marketing | Social Media &amp; Graphic Design | Aubrey, Providence Village &amp; Little Elm TX</title>
+    <meta name="title" content="HOOP Marketing | Social Media &amp; Graphic Design | Aubrey, Providence Village &amp; Little Elm TX" />
+    <meta name="description" content="HOOP Marketing &amp; Graphic Design helps small businesses in Aubrey, Providence Village, Little Elm, and the greater DFW area grow with bold branding, social media management, and results-driven marketing. Get a free consultation today." />
+    <meta name="keywords" content="marketing agency Aubrey TX, graphic design Providence Village TX, social media management Little Elm TX, small business marketing DFW, branding Aubrey Texas, marketing Denton County, paid ads Little Elm, website design Aubrey TX, marketing agency Prosper TX, marketing agency Celina TX, marketing agency Frisco TX" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://hoopmarketingtx.com/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hoopmarketingtx.com/" />
+    <meta property="og:title" content="HOOP Marketing | Bold Brands &amp; Results-Driven Marketing | North DFW" />
+    <meta property="og:description" content="Serving Aubrey, Providence Village, Little Elm, and surrounding DFW communities. We build bold brands and aggressive marketing systems for small businesses." />
+    <meta property="og:image" content="https://hoopmarketingtx.com/assets/HOOP-Marketing-Logo-2.png" />
+    <meta property="og:site_name" content="HOOP Marketing" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://hoopmarketingtx.com/" />
+    <meta name="twitter:title" content="HOOP Marketing | Bold Brands &amp; Results-Driven Marketing | North DFW" />
+    <meta name="twitter:description" content="Serving Aubrey, Providence Village, Little Elm, and surrounding DFW communities. We build bold brands and aggressive marketing systems for small businesses." />
+    <meta name="twitter:image" content="https://hoopmarketingtx.com/assets/HOOP-Marketing-Logo-2.png" />
+
+    <!-- Local Business Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "HOOP Marketing & Graphic Design",
+      "description": "Bold marketing and graphic design for small businesses in Aubrey, Providence Village, Little Elm, and the greater DFW area.",
+      "url": "https://hoopmarketingtx.com",
+      "logo": "https://hoopmarketingtx.com/assets/HOOP-Marketing-Logo-2.png",
+      "image": "https://hoopmarketingtx.com/assets/HOOP-Marketing-Logo-2.png",
+      "sameAs": [
+        "https://www.instagram.com/hoopmarketingtx"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Aubrey",
+        "addressRegion": "TX",
+        "postalCode": "76227",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Aubrey", "containedInPlace": { "@type": "State", "name": "Texas" } },
+        { "@type": "City", "name": "Providence Village", "containedInPlace": { "@type": "State", "name": "Texas" } },
+        { "@type": "City", "name": "Little Elm", "containedInPlace": { "@type": "State", "name": "Texas" } },
+        { "@type": "City", "name": "Prosper", "containedInPlace": { "@type": "State", "name": "Texas" } },
+        { "@type": "City", "name": "Celina", "containedInPlace": { "@type": "State", "name": "Texas" } },
+        { "@type": "City", "name": "Gunter", "containedInPlace": { "@type": "State", "name": "Texas" } },
+        { "@type": "City", "name": "Frisco", "containedInPlace": { "@type": "State", "name": "Texas" } },
+        { "@type": "City", "name": "The Colony", "containedInPlace": { "@type": "State", "name": "Texas" } }
+      ],
+      "serviceType": [
+        "Social Media Management",
+        "Graphic Design",
+        "Brand Identity",
+        "Paid Advertising",
+        "Marketing Strategy",
+        "Website Design"
+      ],
+      "priceRange": "$$"
+    }
+    </script>
+    <style>
+      #splash {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: #0a0a0a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.5s ease;
+      }
+      #splash.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+      #splash img {
+        width: 96px;
+        height: 96px;
+        animation: hoop-spin 1.1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        filter: drop-shadow(0 0 24px rgba(0, 184, 230, 0.5));
+      }
+      @keyframes hoop-spin {
+        0%   { transform: rotate(0deg) scale(1); }
+        50%  { transform: rotate(180deg) scale(1.08); }
+        100% { transform: rotate(360deg) scale(1); }
+      }
+    </style>
   </head>
   <body>
+    <div id="splash">
+      <img src="/assets/HOOP-Abstract-Logo.png" alt="Loading HOOP Marketing" />
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

@@ -21,8 +21,11 @@ export default function Footer() {
                 className="h-32 w-auto"
               />
               <p className="text-white/50 max-w-md leading-relaxed">
-                Bold marketing and stunning design for businesses that refuse to blend in. 
+                Bold marketing and stunning design for businesses that refuse to blend in.
                 Texas proud, results driven.
+              </p>
+              <p className="text-white/30 text-sm max-w-md mt-2">
+                Proudly serving Aubrey, Providence Village, Little Elm, Prosper, Celina &amp; the greater DFW area.
               </p>
             </motion.div>
 

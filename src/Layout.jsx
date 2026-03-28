@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -17,6 +17,21 @@ const navLinks = [
 export default function Layout({ children }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHome = location.pathname === '/' || location.pathname === '/Home';
+
+  const handleGetStarted = () => {
+    setMobileMenuOpen(false);
+    if (isHome) {
+      scrollToSection('#contact');
+    } else {
+      navigate('/');
+      setTimeout(() => {
+        document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,17 +79,17 @@ export default function Layout({ children }) {
       >
         <nav className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center py-3">
+            <Link to="/" className="flex items-center py-3">
               <img 
                 src={headerLogo} 
                 alt="HOOP Marketing" 
                 className="h-24 w-auto"
               />
-            </button>
+            </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => (
+              {isHome ? navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => scrollToSection(link.href)}
@@ -82,9 +97,27 @@ export default function Layout({ children }) {
                 >
                   {link.name}
                 </button>
+              )) : navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={`/${link.href}`}
+                  className="text-white/70 hover:text-white font-medium transition-colors duration-300"
+                >
+                  {link.name}
+                </Link>
               ))}
+              <Link
+                to="/Blog"
+                className={`font-medium transition-colors duration-300 ${
+                  location.pathname === '/Blog'
+                    ? 'text-[#00B8E6]'
+                    : 'text-white/70 hover:text-white'
+                }`}
+              >
+                Blog
+              </Link>
               <Button
-                onClick={() => scrollToSection('#contact')}
+                onClick={handleGetStarted}
                 className="bg-[#00B8E6] hover:bg-[#00B8E6]/90 text-white px-6 rounded-full"
               >
                 Get Started
@@ -114,14 +147,21 @@ export default function Layout({ children }) {
                 {navLinks.map((link) => (
                   <button
                     key={link.name}
-                    onClick={() => scrollToSection(link.href)}
+                    onClick={() => isHome ? scrollToSection(link.href) : undefined}
                     className="block w-full text-left text-white/70 hover:text-white font-medium py-2 transition-colors"
                   >
                     {link.name}
                   </button>
                 ))}
+                <Link
+                  to="/Blog"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block w-full text-left font-medium py-2 transition-colors text-[#00B8E6] hover:text-[#00B8E6]/80"
+                >
+                  Blog
+                </Link>
                 <Button
-                  onClick={() => scrollToSection('#contact')}
+                  onClick={handleGetStarted}
                   className="w-full bg-[#00B8E6] hover:bg-[#00B8E6]/90 text-white rounded-full mt-4"
                 >
                   Get Started
