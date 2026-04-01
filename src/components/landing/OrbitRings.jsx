@@ -26,10 +26,12 @@ export default function OrbitRings({ smooth }) {
 
   useEffect(() => {
     const onScroll = () => {
-      if (window.scrollY > 2) {
-        setScrolled(true);
-        window.removeEventListener('scroll', onScroll);
-      }
+      const y = window.scrollY;
+      setScrolled((prev) => {
+        if (!prev && y > 20) return true;   // crossed into scroll territory
+        if (prev && y < 10) return false;   // scrolled back to top — restore idle
+        return prev;
+      });
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
