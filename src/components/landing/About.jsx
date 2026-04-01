@@ -26,7 +26,7 @@ const values = [
 
 export default function About() {
   return (
-    <section className="py-32 bg-gray-50">
+    <section className="py-16 md:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <span className="text-[#00B8E6] font-semibold tracking-wider uppercase text-sm">About HOOP</span>

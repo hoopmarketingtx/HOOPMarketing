@@ -149,14 +149,14 @@ export default function Portfolio() {
 
   return (
     <>
-      <section className="py-32 bg-[#0a0a0a]" id="work">
+      <section className="py-16 md:py-24 bg-[#0a0a0a]" id="work">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col md:flex-row md:items-end md:justify-between mb-16"
+            className="flex flex-col md:flex-row md:items-end md:justify-between mb-10"
           >
             <div>
               <span className="text-[#00B8E6] font-semibold tracking-wider uppercase text-sm">Our Work</span>

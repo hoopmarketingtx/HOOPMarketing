@@ -144,7 +144,7 @@ export default function Hero({ smooth }) {
         <OrbitRings smooth={smooth} />
       </div>
 
-      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-32 w-full">
+      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-20 w-full">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -193,7 +193,7 @@ export default function Hero({ smooth }) {
               </Button>
             </div>
 
-            <div className="flex items-center gap-12 mt-16 pt-8 border-t border-white/10">
+            <div className="flex items-center gap-8 lg:gap-12 mt-8 lg:mt-12 pt-8">
               <div>
                 <div className="text-4xl font-bold text-white">100+</div>
                 <div className="text-white/50 text-sm mt-1">Projects Delivered</div>
