@@ -128,7 +128,7 @@ function InstagramSlideshow() {
 }
 
 export default function Hero({ smooth }) {
-  const contentOpacity = useTransform(smooth, [0, 0.25], [1, 0]);
+  const contentOpacity = useTransform(smooth, [0.15, 0.5], [1, 0]);
   const sectionOpacity = useTransform(smooth, [0.55, 0.85], [1, 0]);
   // Once the section fades out, disable pointer-events so scrolling passes through to Services
   const sectionPointerEvents = useTransform(sectionOpacity, (v) => v < 0.05 ? 'none' : 'auto');
@@ -144,8 +144,8 @@ export default function Hero({ smooth }) {
         <OrbitRings smooth={smooth} />
       </div>
 
-      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32 w-full">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-32 w-full">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}

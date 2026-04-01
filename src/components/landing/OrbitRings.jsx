@@ -48,16 +48,19 @@ export default function OrbitRings({ smooth }) {
         style={{ scale, opacity: ringOpacity, willChange: 'transform, opacity' }}
         className="absolute inset-0 flex items-center justify-center"
       >
-        {/* Wrapper: idle = tilted 3D gyroscope, scrolled = eases flat then freezes */}
+        {/* Wrapper: idle = tilted 3D gyroscope, scrolled = eases flat then freezes.
+             Responsive: min(700px, 85vw) so rings never overflow mobile screens. */}
         <div
-          className="relative w-[700px] h-[700px]"
           style={{
+            position: 'relative',
+            width: 'min(700px, 85vw)',
+            height: 'min(700px, 85vw)',
             transformStyle: 'preserve-3d',
             transform: !scrolled ? 'rotateX(55deg) rotateY(30deg)' : undefined,
             animation: scrolled ? 'convergeToPlane 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards' : undefined,
           }}
         >
-          {/* Ring 1 — spins idle only, freezes on scroll */}
+          {/* Ring 1 — full size */}
           <div
             className="absolute inset-0"
             style={{ animation: !scrolled ? 'idleX 11s linear infinite, idleZ1 18s linear infinite' : 'none' }}
@@ -65,18 +68,18 @@ export default function OrbitRings({ smooth }) {
             <div className="absolute inset-0 rounded-full" style={{ border: '1.5px solid rgba(255,255,255,0.55)', boxShadow: '0 0 12px 4px rgba(255,255,255,0.18), inset 0 0 12px 4px rgba(255,255,255,0.08)' }} />
           </div>
 
-          {/* Ring 2 — spins idle only */}
+          {/* Ring 2 — 15.7% inset (110/700) so it scales with the wrapper */}
           <div
-            className="absolute inset-[110px]"
-            style={{ animation: !scrolled ? 'idleY 7s linear infinite, idleZ2 14s linear infinite' : 'none' }}
+            className="absolute"
+            style={{ inset: '15.7%', animation: !scrolled ? 'idleY 7s linear infinite, idleZ2 14s linear infinite' : 'none' }}
           >
             <div className="absolute inset-0 rounded-full" style={{ border: '1.5px solid rgba(255,255,255,0.42)', boxShadow: '0 0 12px 4px rgba(0,184,230,0.25), inset 0 0 12px 4px rgba(0,184,230,0.1)' }} />
           </div>
 
-          {/* Ring 3 — spins idle only */}
+          {/* Ring 3 — 31.4% inset (220/700) */}
           <div
-            className="absolute inset-[220px]"
-            style={{ animation: !scrolled ? 'idleX 13s linear infinite reverse, idleZ3 10s linear infinite' : 'none' }}
+            className="absolute"
+            style={{ inset: '31.4%', animation: !scrolled ? 'idleX 13s linear infinite reverse, idleZ3 10s linear infinite' : 'none' }}
           >
             <div className="absolute inset-0 rounded-full" style={{ border: '1.5px solid rgba(255,255,255,0.7)', boxShadow: '0 0 16px 5px rgba(255,255,255,0.22), inset 0 0 10px 3px rgba(255,255,255,0.1)' }} />
           </div>
