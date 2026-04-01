@@ -25,7 +25,7 @@ export default function Testimonials() {
   const prev = () => setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section className="py-16 md:py-24 bg-white overflow-hidden" id="testimonials">
+    <section className="py-16 md:py-24 bg-[#0a0a0a] overflow-hidden" id="testimonials">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,7 +35,7 @@ export default function Testimonials() {
           className="text-center mb-16"
         >
           <span className="text-[#00B8E6] font-semibold tracking-wider uppercase text-sm">Testimonials</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0a0a0a] mt-4 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 tracking-tight">
             What Our
             <br />
             <span className="bg-gradient-to-r from-[#00B8E6] to-[#1F4E5F] bg-clip-text text-transparent">Clients Say</span>
@@ -43,7 +43,7 @@ export default function Testimonials() {
         </motion.div>
 
         <div className="relative max-w-4xl mx-auto">
-          <div className="absolute -top-12 left-0 text-[#00B8E6]/10">
+          <div className="absolute -top-12 left-0 text-[#00B8E6]/20 drop-shadow-[0_0_18px_rgba(0,184,230,0.5)]">
             <Quote className="w-32 h-32" />
           </div>
 
@@ -56,12 +56,12 @@ export default function Testimonials() {
               transition={{ duration: 0.5 }}
               className="text-center relative z-10"
             >
-              <p className="text-2xl md:text-3xl lg:text-4xl font-medium text-[#0a0a0a] leading-relaxed">
+              <p className="text-2xl md:text-3xl lg:text-4xl font-medium text-white leading-relaxed">
                 "{testimonials[current].quote}"
               </p>
 
               <div className="mt-12 flex flex-col items-center">
-                <div className="w-20 h-20 rounded-full bg-white border-4 border-[#00B8E6]/20 flex items-center justify-center overflow-hidden p-2">
+                <div className="w-20 h-20 rounded-full bg-white/5 border-4 border-[#00B8E6]/20 flex items-center justify-center overflow-hidden p-2">
                   <img
                     src={testimonials[current].logo}
                     alt={testimonials[current].role}
@@ -69,8 +69,8 @@ export default function Testimonials() {
                   />
                 </div>
                 <div className="mt-4">
-                  <div className="font-bold text-[#0a0a0a] text-lg">{testimonials[current].author}</div>
-                  <div className="text-gray-500">{testimonials[current].role}</div>
+                  <div className="font-bold text-white text-lg">{testimonials[current].author}</div>
+                  <div className="text-white/50">{testimonials[current].role}</div>
                 </div>
               </div>
             </motion.div>
@@ -81,7 +81,7 @@ export default function Testimonials() {
               variant="outline"
               size="icon"
               onClick={prev}
-              className="w-12 h-12 rounded-full border-gray-200 hover:border-[#00B8E6] hover:text-[#00B8E6]"
+              className="w-12 h-12 rounded-full border-white/10 text-white/50 hover:border-[#00B8E6] hover:text-[#00B8E6] bg-transparent"
             >
               <ChevronLeft className="w-5 h-5" />
             </Button>
@@ -92,7 +92,7 @@ export default function Testimonials() {
                   key={index}
                   onClick={() => setCurrent(index)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === current ? 'bg-[#00B8E6] w-8' : 'bg-gray-300'
+                    index === current ? 'bg-[#00B8E6] w-8' : 'bg-white/20'
                   }`}
                 />
               ))}
@@ -102,7 +102,7 @@ export default function Testimonials() {
               variant="outline"
               size="icon"
               onClick={next}
-              className="w-12 h-12 rounded-full border-gray-200 hover:border-[#00B8E6] hover:text-[#00B8E6]"
+              className="w-12 h-12 rounded-full border-white/10 text-white/50 hover:border-[#00B8E6] hover:text-[#00B8E6] bg-transparent"
             >
               <ChevronRight className="w-5 h-5" />
             </Button>

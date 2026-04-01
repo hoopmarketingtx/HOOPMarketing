@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useTransform } from 'framer-motion';
 import { ArrowRight, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -7,6 +7,16 @@ import OrbitRings from './OrbitRings';
 // Each entry is one Instagram carousel post — add more objects for more posts.
 // slides: array of image paths for that post's carousel frames.
 const instagramPosts = [
+  {
+    slides: [
+      '/assets/3.31.26/Rick Astley Post 1.png',
+      '/assets/3.31.26/Rick Astley Post 2.png',
+      '/assets/3.31.26/Rick Astley Post 3.png',
+      '/assets/3.31.26/Rick Astley Post 4.png',
+      '/assets/3.31.26/Rick Astley Post 5.png',
+      '/assets/3.31.26/Rick Astley Post 6.png',
+    ],
+  },
   {
     slides: [
       '/assets/3.24.26/1.png',
@@ -30,24 +40,44 @@ const instagramPosts = [
 function InstagramSlideshow() {
   const [postIndex, setPostIndex] = useState(0);
   const [slideIndex, setSlideIndex] = useState(0);
+  const touchStartX = useRef(null);
 
   const post = instagramPosts[postIndex];
   const totalSlides = post.slides.length;
+
+  const goNext = () => {
+    setSlideIndex((prev) => {
+      if (prev + 1 < totalSlides) return prev + 1;
+      setPostIndex((p) => (p + 1) % instagramPosts.length);
+      return 0;
+    });
+  };
+
+  const goPrev = () => {
+    setSlideIndex((prev) => {
+      if (prev > 0) return prev - 1;
+      const prevPost = (postIndex - 1 + instagramPosts.length) % instagramPosts.length;
+      setPostIndex(prevPost);
+      return instagramPosts[prevPost].slides.length - 1;
+    });
+  };
+
+  const onTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
+  const onTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) diff > 0 ? goNext() : goPrev();
+    touchStartX.current = null;
+  };
 
   // Reset slide when switching posts
   useEffect(() => {
     setSlideIndex(0);
   }, [postIndex]);
 
-  // Auto-advance slides within a post, then move to next post
+  // Auto-advance slides
   useEffect(() => {
-    const id = setInterval(() => {
-      setSlideIndex((prev) => {
-        if (prev + 1 < totalSlides) return prev + 1;
-        setPostIndex((p) => (p + 1) % instagramPosts.length);
-        return 0;
-      });
-    }, 4000);
+    const id = setInterval(goNext, 4000);
     return () => clearInterval(id);
   }, [postIndex, totalSlides]);
 
@@ -85,7 +115,12 @@ function InstagramSlideshow() {
         </div>
 
         {/* Slideshow */}
-        <div className="relative overflow-hidden bg-[#0a0a0a]" style={{ aspectRatio: '4/5' }}>
+        <div
+          className="relative overflow-hidden bg-[#0a0a0a]"
+          style={{ aspectRatio: '4/5' }}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+        >
           <AnimatePresence mode="wait">
             <motion.img
               key={`${postIndex}-${slideIndex}`}
