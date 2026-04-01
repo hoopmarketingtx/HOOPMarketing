@@ -142,6 +142,52 @@ const posts = [
       },
     ],
   },
+  {
+    slug: 'local-seo-for-small-businesses',
+    category: 'Strategy',
+    title: 'Local SEO for Small Businesses: How to Show Up When Customers Search "Near Me"',
+    excerpt:
+      'Ranking on Google Maps costs nothing but attention. Here\'s exactly what to focus on if you want your business to appear when locals are ready to buy.',
+    date: 'April 1, 2026',
+    readTime: '5 min read',
+    content: [
+      {
+        heading: 'Your Google Business Profile Is Your Most Important Free Asset',
+        body: 'Before your website, before social media, before ads — claim and fully fill out your Google Business Profile. Add your real address, hours, phone number, website, and at least 10 photos. Businesses with complete profiles get dramatically more clicks than those with incomplete ones. Google rewards completeness because it makes your listing more useful to searchers.',
+      },
+      {
+        heading: 'Reviews Are the Algorithm\'s Favorite Signal',
+        body: 'Google Maps rankings are heavily influenced by the quantity, recency, and quality of your reviews. A steady trickle of new reviews — even just 2–3 per month — outperforms a burst of 20 all at once. Make it a habit: after every happy customer interaction, send a direct link to your Google review page. Most people are willing to leave one; they just need the nudge.',
+      },
+      {
+        heading: 'Consistency Across the Web Matters More Than You Think',
+        body: 'Your business name, address, and phone number (NAP) need to be identical everywhere they appear online — your website, Yelp, Facebook, directories, anywhere. Inconsistencies confuse Google and erode your local ranking. Do a quick audit of every place your business is listed and make sure the information matches exactly, down to whether you abbreviate "Street" or not.',
+      },
+    ],
+  },
+  {
+    slug: 'how-to-create-content-when-you-have-no-time',
+    category: 'Social Media',
+    title: 'How to Create a Month of Content in One Afternoon',
+    excerpt:
+      'You don\'t need to post every day. You need a system. Here\'s how to batch-create a full month of social content in a single focused session.',
+    date: 'March 28, 2026',
+    readTime: '4 min read',
+    content: [
+      {
+        heading: 'Batch Creation Beats Daily Posting Every Time',
+        body: 'The biggest drain on content creation isn\'t the work itself — it\'s context switching. Starting from zero every day, deciding what to post, opening an app, sourcing an image, writing a caption... it adds up to hours per week. Batching kills that. Set aside one afternoon per month, create everything at once, schedule it out, and then forget about it until next month.',
+      },
+      {
+        heading: 'The Simple 4-Type Content Mix',
+        body: 'Rotate through four types of posts: educational (teach something useful), social proof (share a win, review, or result), behind the scenes (show the real people and process), and promotional (your offer, directly). If you\'re posting 3x per week, you\'ll cover all four types in roughly a week\'s rotation. This mix keeps your feed from feeling like a constant sales pitch while still driving conversions.',
+      },
+      {
+        heading: 'Your Phone Is All You Need to Start',
+        body: 'You don\'t need a studio or a photographer to create compelling content. Natural light, a clean background, and a clear message beat polished but generic stock photos every time. Spend 20 minutes walking through your space, process, or product and film it. Real > perfect, especially for local businesses where authenticity builds faster trust than professional production.',
+      },
+    ],
+  },
 ];
 
 const categories = ['All', 'Strategy', 'Social Media', 'Tips', 'Branding', 'Paid Ads', 'Content'];

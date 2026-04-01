@@ -26,29 +26,29 @@ const values = [
 
 export default function About() {
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section className="py-16 md:py-24 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <span className="text-[#00B8E6] font-semibold tracking-wider uppercase text-sm">About HOOP</span>
-          <h2 id="about" className="text-4xl md:text-5xl font-bold text-[#0a0a0a] mt-4 tracking-tight leading-tight" style={{ scrollMarginTop: '100px' }}>
+          <h2 id="about" className="text-4xl md:text-5xl font-bold text-white mt-4 tracking-tight leading-tight" style={{ scrollMarginTop: '100px' }}>
             Built Different.
             <br />
             <span className="bg-gradient-to-r from-[#00B8E6] to-[#1F4E5F] bg-clip-text text-transparent">Built for You.</span>
           </h2>
 
-          <p className="text-xl text-gray-600 mt-8 leading-relaxed">
+          <p className="text-xl text-white/60 mt-8 leading-relaxed">
             HOOP Marketing & Graphic Design was built on a foundation of both formal training and hands-on learning. Our founder spent years mastering design, marketing strategy, and business management—including an MBA—before helping small businesses across the DFW area bring their brands to life.
           </p>
 
-          <p className="text-lg text-gray-500 mt-4 leading-relaxed">
+          <p className="text-lg text-white/50 mt-4 leading-relaxed">
             We've delivered plenty of projects, from logos and websites to social media campaigns and paid ads. Every project combines practical know-how with a focus on results that actually matter.
           </p>
 
-          <p className="text-lg text-gray-500 mt-4 leading-relaxed">
+          <p className="text-lg text-white/50 mt-4 leading-relaxed">
             No fluff. No empty promises. Just strategies that work.
           </p>
 
-          <p className="text-lg text-gray-500 mt-4 leading-relaxed italic">
+          <p className="text-lg text-[#00B8E6]/70 mt-4 leading-relaxed italic">
             There are a lot of hoops in marketing. We handle them so you don't have to.
           </p>
 
@@ -68,8 +68,8 @@ export default function About() {
                     <Icon className="w-6 h-6 text-[#00B8E6]" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-[#0a0a0a] text-lg">{value.title}</h3>
-                    <p className="text-gray-500 mt-1">{value.description}</p>
+                    <h3 className="font-bold text-white text-lg">{value.title}</h3>
+                    <p className="text-white/50 mt-1">{value.description}</p>
                   </div>
                 </motion.div>
               );
