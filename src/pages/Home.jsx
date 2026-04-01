@@ -14,19 +14,20 @@ export default function Home() {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const smooth = useSpring(scrollYProgress, { stiffness: 400, damping: 40, mass: 0.2 });
   const servicesOpacity = useTransform(smooth, [0.45, 0.85], [0, 1]);
+  const servicesPointerEvents = useTransform(servicesOpacity, (v) => v > 0.01 ? 'auto' : 'none');
 
   return (
     <div className="bg-[#0a0a0a]">
-      {/* Hero scroll zone — sits above Services (z:2 > z:1) */}
-      <div ref={heroRef} className="relative h-[150vh] pointer-events-none" style={{ zIndex: 2 }}>
+      {/* Hero scroll zone — on top (z:3) so Services below can't block hero content */}
+      <div ref={heroRef} className="relative h-[150vh]" style={{ zIndex: 3 }}>
         <Hero smooth={scrollYProgress} />
       </div>
-      {/* Services fades in behind Hero, pulled up to overlap the same viewport area.
+      {/* Services sits below Hero (z:2), fades in as Hero fades out.
           The tall wrapper gives it scroll room so it pins until the user scrolls past it. */}
-      <div style={{ marginTop: '-100vh', zIndex: 3 }} className="relative pointer-events-none">
+      <div style={{ marginTop: '-100vh', zIndex: 2 }} className="relative pointer-events-none">
         <motion.div
-          style={{ opacity: servicesOpacity }}
-          className="sticky top-0 pointer-events-auto"
+          style={{ opacity: servicesOpacity, pointerEvents: servicesPointerEvents }}
+          className="sticky top-0"
         >
           <Services onSelectPackage={setSelectedPackage} />
         </motion.div>
