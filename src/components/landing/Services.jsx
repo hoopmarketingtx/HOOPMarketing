@@ -476,7 +476,7 @@ export default function Services({ onSelectPackage }) {
 
   return (
     <>
-      <section className="py-16 md:py-24 bg-[#0a0a0a]" id="services">
+      <section className="py-16 md:py-24 bg-[#0a0a0a]" id="services" style={{ scrollMarginTop: '80px' }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
