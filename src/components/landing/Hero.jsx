@@ -128,8 +128,8 @@ function InstagramSlideshow() {
 }
 
 export default function Hero({ smooth }) {
-  const contentOpacity = useTransform(smooth, [0.15, 0.5], [1, 0]);
-  const sectionOpacity = useTransform(smooth, [0.55, 0.85], [1, 0]);
+  const contentOpacity = useTransform(smooth, [0.4, 0.7], [1, 0]);
+  const sectionOpacity = useTransform(smooth, [0.65, 0.9], [1, 0]);
   // Once the section fades out, disable pointer-events so scrolling passes through to Services
   const sectionPointerEvents = useTransform(sectionOpacity, (v) => v < 0.05 ? 'none' : 'auto');
   return (
