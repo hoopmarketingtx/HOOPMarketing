@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useTransform } from 'framer-motion';
 import { ArrowRight, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import OrbitRings from './OrbitRings';
 
 // Each entry is one Instagram carousel post — add more objects for more posts.
 // slides: array of image paths for that post's carousel frames.
@@ -126,18 +127,22 @@ function InstagramSlideshow() {
   );
 }
 
-export default function Hero() {
+export default function Hero({ smooth }) {
+  const contentOpacity = useTransform(smooth, [0, 0.25], [1, 0]);
+  const sectionOpacity = useTransform(smooth, [0.55, 0.85], [1, 0]);
   return (
-    <section className="relative min-h-screen bg-[#0a0a0a] overflow-hidden flex items-center">
+    <motion.section
+      className="sticky top-0 min-h-screen bg-[#0a0a0a] overflow-hidden flex items-center"
+      style={{ opacity: sectionOpacity, contain: 'paint', transform: 'translateZ(0)' }}
+    >
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 right-20 w-96 h-96 bg-[#00B8E6]/20 rounded-full blur-[120px]" />
         <div className="absolute bottom-20 left-20 w-64 h-64 bg-[#00B8E6]/10 rounded-full blur-[100px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-white/5 rounded-full" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full" />
+        <OrbitRings smooth={smooth} />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32 w-full">
+      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -211,23 +216,7 @@ export default function Hero() {
             <InstagramSlideshow />
           </motion.div>
         </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1.5 h-3 bg-[#00B8E6] rounded-full mt-2"
-          />
-        </div>
       </motion.div>
-    </section>
+    </motion.section>
   );
 }

@@ -476,7 +476,7 @@ export default function Services({ onSelectPackage }) {
 
   return (
     <>
-      <section className="py-32 bg-white" id="services">
+      <section className="py-32 bg-[#0a0a0a]" id="services">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -486,12 +486,12 @@ export default function Services({ onSelectPackage }) {
             className="text-center mb-20"
           >
             <span className="text-[#00B8E6] font-semibold tracking-wider uppercase text-sm">What We Do</span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0a0a0a] mt-4 tracking-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-4 tracking-tight">
               Services That
               <br />
               <span className="bg-gradient-to-r from-[#00B8E6] to-[#1F4E5F] bg-clip-text text-transparent">Move Needles</span>
             </h2>
-            <p className="text-xl text-gray-500 mt-6 max-w-2xl mx-auto">
+            <p className="text-xl text-white/50 mt-6 max-w-2xl mx-auto">
               We don't believe in cookie-cutter solutions. Every strategy is built to dominate your specific market.
             </p>
           </motion.div>
@@ -505,7 +505,7 @@ export default function Services({ onSelectPackage }) {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 onClick={() => setOpenService(service.title)}
-                className="group relative bg-gray-50 hover:bg-[#0a0a0a] rounded-3xl p-8 transition-all duration-500 cursor-pointer overflow-hidden"
+                className="group relative bg-white/5 hover:bg-white/10 rounded-3xl p-8 transition-all duration-500 cursor-pointer overflow-hidden"
               >
                 <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-20 blur-3xl transition-opacity duration-500`} />
 
@@ -513,11 +513,11 @@ export default function Services({ onSelectPackage }) {
                   <service.icon className="w-7 h-7 text-white" />
                 </div>
 
-                <h3 className="text-2xl font-bold text-[#0a0a0a] group-hover:text-white transition-colors duration-500 mb-4">
+                <h3 className="text-2xl font-bold text-white transition-colors duration-500 mb-4">
                   {service.title}
                 </h3>
 
-                <p className="text-gray-500 group-hover:text-gray-400 transition-colors duration-500 leading-relaxed">
+                <p className="text-white/40 group-hover:text-white/60 transition-colors duration-500 leading-relaxed">
                   {service.cardDescription || service.description}
                 </p>
 
