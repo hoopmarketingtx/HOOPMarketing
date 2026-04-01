@@ -144,7 +144,7 @@ export default function Hero({ smooth }) {
         <OrbitRings smooth={smooth} />
       </div>
 
-      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-20 w-full">
+      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-24 pb-12 lg:pt-28 lg:pb-20 w-full">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
