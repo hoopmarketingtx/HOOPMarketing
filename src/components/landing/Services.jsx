@@ -485,8 +485,7 @@ export default function Services({ onSelectPackage }) {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <span className="text-[#00B8E6] font-semibold tracking-wider uppercase text-sm">What We Do</span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-4 tracking-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
               Services That
               <br />
               <span className="bg-gradient-to-r from-[#00B8E6] to-[#1F4E5F] bg-clip-text text-transparent">Move Needles</span>
