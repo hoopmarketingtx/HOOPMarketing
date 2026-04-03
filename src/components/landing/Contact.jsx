@@ -114,7 +114,7 @@ export default function Contact({ selectedPackage, onClearPackage }) {
             </p>
             <div className="mt-12">
               <a
-                href="mailto:hoopmarketing@gmail.com"
+                href="mailto:hoopmarketingtx@gmail.com"
                 className="inline-flex items-center gap-4 text-white/80 group rounded-2xl px-4 py-3 -mx-4 transition-all duration-300 hover:bg-white/5 hover:text-white"
               >
                 <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:bg-[#00B8E6]/20 group-hover:scale-110">
@@ -122,7 +122,7 @@ export default function Contact({ selectedPackage, onClearPackage }) {
                 </div>
                 <div>
                   <div className="text-white/50 text-sm transition-colors duration-300 group-hover:text-[#00B8E6]/70">Email Us</div>
-                  <div className="text-white font-medium transition-colors duration-300 group-hover:text-[#00B8E6]">hoopmarketing@gmail.com</div>
+                  <div className="text-white font-medium transition-colors duration-300 group-hover:text-[#00B8E6]">hoopmarketingtx@gmail.com</div>
                 </div>
               </a>
             </div>
