@@ -27,9 +27,22 @@ export default function Layout({ children }) {
       scrollToSection('#contact');
     } else {
       navigate('/');
-      setTimeout(() => {
-        document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-      }, 300);
+      setTimeout(() => scrollToSection('#contact'), 500);
+    }
+  };
+
+  const scrollToSection = (href) => {
+    setMobileMenuOpen(false);
+    if (href === '#services') {
+      // Services lives inside the scroll-driven hero animation zone.
+      // scrollIntoView won't reveal it because its position is mid-hero.
+      // Scroll past the hero zone (150vh) so the Services section is fully visible.
+      window.scrollTo({ top: Math.round(1.5 * window.innerHeight), behavior: 'smooth' });
+      return;
+    }
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -39,9 +52,8 @@ export default function Layout({ children }) {
       scrollToSection(href);
     } else {
       navigate('/');
-      setTimeout(() => {
-        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-      }, 300);
+      // Wait long enough for the home page and its scroll-driven sections to mount
+      setTimeout(() => scrollToSection(href), 500);
     }
   };
 
@@ -53,16 +65,8 @@ export default function Layout({ children }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (href) => {
-    setMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         

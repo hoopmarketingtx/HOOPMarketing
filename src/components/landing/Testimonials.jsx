@@ -27,7 +27,7 @@ export default function Testimonials() {
   return (
     <section className="relative py-16 md:py-24 bg-[#0a0a0a]" id="testimonials">
       {/* Background glow orbs */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0">
         <div className="absolute top-1/2 left-1/2 w-[800px] h-[600px] bg-[#00B8E6]/10 rounded-full blur-[200px] -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-1/4 left-1/4 w-[450px] h-[450px] bg-rose-500/8 rounded-full blur-[150px]" />
         <div className="absolute top-1/4 right-1/4 w-[450px] h-[450px] bg-indigo-500/8 rounded-full blur-[150px]" />

@@ -225,7 +225,7 @@ export default function Portfolio() {
     <>
       <section className="relative py-16 md:py-24 bg-[#0a0a0a]" id="work">
         {/* Background glow orbs */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="pointer-events-none absolute inset-0">
           <div className="absolute top-1/3 right-1/4 w-[650px] h-[650px] bg-[#00B8E6]/10 rounded-full blur-[180px] translate-x-1/3" />
           <div className="absolute bottom-1/4 left-1/3 w-[550px] h-[550px] bg-indigo-500/10 rounded-full blur-[160px] -translate-x-1/4" />
         </div>
