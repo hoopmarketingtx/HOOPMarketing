@@ -2,6 +2,33 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
+const websiteProjects = [
+  {
+    title: "TX Pro Kicks",
+    url: "txprokicks.com",
+    href: "https://txprokicks.com",
+    screenshot: "https://api.microlink.io/?url=https%3A%2F%2Ftxprokicks.com&screenshot=true&meta=false&embed=screenshot.url&javascript=false",
+    category: "Web Design & Development",
+    accent: "from-blue-500 to-indigo-600",
+  },
+  {
+    title: "Blue Canopy Realty",
+    url: "bluecanopyrealty.vercel.app",
+    href: "https://bluecanopyrealty.vercel.app",
+    screenshot: "https://api.microlink.io/?url=https%3A%2F%2Fbluecanopyrealty.vercel.app&screenshot=true&meta=false&embed=screenshot.url",
+    category: "Web Design & Development",
+    accent: "from-teal-500 to-cyan-600",
+  },
+  {
+    title: "Beaudry Framing",
+    url: "beaudry-framing.vercel.app",
+    href: "https://beaudry-framing.vercel.app",
+    screenshot: "https://api.microlink.io/?url=https%3A%2F%2Fbeaudry-framing.vercel.app&screenshot=true&meta=false&embed=screenshot.url",
+    category: "Web Design & Development",
+    accent: "from-amber-500 to-orange-600",
+  },
+];
+
 const projects = [
   {
     title: "La Casa de Las Calacas",
@@ -41,6 +68,53 @@ const projects = [
     ],
   },
 ];
+
+function WebsiteCard({ site, index }) {
+  return (
+    <motion.a
+      href={site.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0, margin: "0px 0px 150px 0px" }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="group relative bg-white/5 hover:bg-white/10 rounded-2xl overflow-hidden flex flex-col transition-all duration-500 cursor-pointer"
+    >
+      {/* Browser chrome */}
+      <div className="flex-shrink-0 flex items-center gap-1.5 px-4 py-2.5 bg-white/5 border-b border-white/10">
+        <span className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
+        <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
+        <span className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
+        <div className="flex-1 ml-2 bg-white/8 rounded-full px-3 py-1 flex items-center justify-between">
+          <span className="text-white/30 text-[11px] font-mono truncate">{site.url}</span>
+          <ArrowUpRight className="w-3.5 h-3.5 text-white/20 group-hover:text-[#00B8E6] transition-colors duration-300 flex-shrink-0 ml-2" />
+        </div>
+      </div>
+      {/* Screenshot preview */}
+      <div className="relative overflow-hidden w-full aspect-video flex-shrink-0">
+        <div className={`absolute inset-0 bg-gradient-to-br ${site.accent} opacity-30`} />
+        <img
+          src={site.screenshot}
+          alt={`${site.title} website preview`}
+          className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+          loading="lazy"
+          onError={(e) => { e.currentTarget.style.display = 'none'; }}
+        />
+      </div>
+      {/* Label row */}
+      <div className="px-4 py-3 flex items-center justify-between">
+        <div>
+          <span className="text-[#00B8E6] text-[10px] font-semibold uppercase tracking-wider">{site.category}</span>
+          <h3 className="text-white font-bold text-base mt-0.5">{site.title}</h3>
+        </div>
+        <div className="w-8 h-8 rounded-full bg-white/10 group-hover:bg-[#00B8E6] flex items-center justify-center transition-colors duration-300 flex-shrink-0">
+          <ArrowUpRight className="w-4 h-4 text-white" />
+        </div>
+      </div>
+    </motion.a>
+  );
+}
 
 function SlideshowCover({ images, isLarge }) {
   const [current, setCurrent] = useState(0);
@@ -149,7 +223,12 @@ export default function Portfolio() {
 
   return (
     <>
-      <section className="py-16 md:py-24 bg-[#0a0a0a]" id="work">
+      <section className="relative py-16 md:py-24 bg-[#0a0a0a]" id="work">
+        {/* Background glow orbs */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/3 right-1/4 w-[650px] h-[650px] bg-[#00B8E6]/10 rounded-full blur-[180px] translate-x-1/3" />
+          <div className="absolute bottom-1/4 left-1/3 w-[550px] h-[550px] bg-indigo-500/10 rounded-full blur-[160px] -translate-x-1/4" />
+        </div>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -177,7 +256,7 @@ export default function Portfolio() {
                 key={project.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0, margin: "0px 0px 150px 0px" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 onClick={() => project.expandable && setOpenProject(project.title)}
                 className={`group relative overflow-hidden rounded-3xl ${
@@ -208,6 +287,13 @@ export default function Portfolio() {
                   </div>
                 </div>
               </motion.div>
+            ))}
+          </div>
+
+          {/* Website builds row */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+            {websiteProjects.map((site, i) => (
+              <WebsiteCard key={site.title} site={site} index={i} />
             ))}
           </div>
         </div>

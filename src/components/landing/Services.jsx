@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Megaphone, Palette, TrendingUp, Monitor, ArrowUpRight, ArrowLeft, X, Check } from 'lucide-react';
 
@@ -216,18 +217,43 @@ function ServiceModal({ service, onClose, onSelectPackage }) {
 
   const isWebsiteBuild = service.title === 'Bespoke Website Builds';
 
+  // Close on Escape key
+  useEffect(() => {
+    const handler = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', handler);
+    return () => document.removeEventListener('keydown', handler);
+  }, [onClose]);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md flex flex-col overflow-auto"
-      style={{ overscrollBehavior: 'contain' }}
-      onClick={(e) => e.target === e.currentTarget && onClose()}
+      className="fixed inset-0 z-[60]"
     >
-      {/* Header */}
-      <div className="flex-shrink-0 border-b border-white/10 px-4 md:px-8 py-5 flex items-center justify-between">
-        <div className="flex items-center gap-3">
+      {/* Dark backdrop — click anywhere here to close */}
+      <div
+        className="absolute inset-0 bg-[#0a0a0a]/95 backdrop-blur-md cursor-pointer"
+        onClick={onClose}
+      />
+
+      {/* Floating close button — always visible, outside scroll area */}
+      <button
+        onClick={onClose}
+        className="absolute top-5 right-5 z-20 flex items-center gap-2 px-5 py-2.5 bg-white/15 hover:bg-white/25 border border-white/30 rounded-full text-white text-sm font-semibold transition-all shadow-lg"
+        aria-label="Close"
+      >
+        <X className="w-4 h-4" />
+        Close
+      </button>
+
+      {/* Content panel — stopPropagation so content clicks don't hit backdrop */}
+      <div
+        className="absolute inset-0 flex flex-col"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header — never scrolls */}
+        <div className="flex-shrink-0 border-b border-white/10 px-4 md:px-8 py-5 pr-40 flex items-center gap-3">
           {designStep === 'form' && (
             <button
               onClick={() => setDesignStep(null)}
@@ -243,16 +269,9 @@ function ServiceModal({ service, onClose, onSelectPackage }) {
             <h2 className="text-xl md:text-3xl font-bold text-white mt-0.5">{service.title}</h2>
           </div>
         </div>
-        <button
-          onClick={onClose}
-          className="w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors flex-shrink-0"
-        >
-          <X className="w-5 h-5" />
-        </button>
-      </div>
 
-      {/* Content */}
-      <div className="flex-1 px-4 md:px-8 py-10">
+        {/* Scrollable content */}
+        <div className="flex-1 overflow-auto px-4 md:px-8 py-10">
 
         {designStep === 'form' ? (
           <div className="max-w-lg mx-auto">
@@ -465,6 +484,7 @@ function ServiceModal({ service, onClose, onSelectPackage }) {
           )}
           </>
         )}
+        </div>
       </div>
     </motion.div>
   );
@@ -476,7 +496,12 @@ export default function Services({ onSelectPackage }) {
 
   return (
     <>
-      <section className="pt-24 pb-16 md:py-24 bg-[#0a0a0a]" id="services" style={{ scrollMarginTop: '80px' }}>
+      <section className="relative pt-24 pb-16 md:py-24 bg-[#0a0a0a]" id="services" style={{ scrollMarginTop: '80px' }}>
+        {/* Background glow orbs */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/3 w-[700px] h-[700px] bg-[#00B8E6]/12 rounded-full blur-[180px] -translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[160px] translate-x-1/4" />
+        </div>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -530,19 +555,22 @@ export default function Services({ onSelectPackage }) {
         </div>
       </section>
 
-      <AnimatePresence>
-        {activeService && (
-          <ServiceModal
-            service={activeService}
-            onClose={() => setOpenService(null)}
-            onSelectPackage={(pkg) => {
-              onSelectPackage(pkg);
-              setOpenService(null);
-              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-          />
-        )}
-      </AnimatePresence>
+      {createPortal(
+        <AnimatePresence>
+          {activeService && (
+            <ServiceModal
+              service={activeService}
+              onClose={() => setOpenService(null)}
+              onSelectPackage={(pkg) => {
+                onSelectPackage(pkg);
+                setOpenService(null);
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            />
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </>
   );
 }

@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useTransform } from 'framer-motion';
 import { ArrowRight, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import OrbitRings from './OrbitRings';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 // Each entry is one Instagram carousel post — add more objects for more posts.
 // slides: array of image paths for that post's carousel frames.
@@ -163,8 +164,15 @@ function InstagramSlideshow() {
 }
 
 export default function Hero({ smooth }) {
-  const contentOpacity = useTransform(smooth, [0.4, 0.7], [1, 0]);
-  const sectionOpacity = useTransform(smooth, [0.65, 0.9], [1, 0]);
+  const isMobile = useIsMobile();
+  // On mobile, delay the fade so the Instagram feed stays visible long enough
+  // for the user to scroll through it before the hero begins fading out.
+  const contentOpacityDesktop = useTransform(smooth, [0.4, 0.7], [1, 0]);
+  const contentOpacityMobile = useTransform(smooth, [0.6, 0.88], [1, 0]);
+  const sectionOpacityDesktop = useTransform(smooth, [0.65, 0.9], [1, 0]);
+  const sectionOpacityMobile = useTransform(smooth, [0.8, 0.97], [1, 0]);
+  const contentOpacity = isMobile ? contentOpacityMobile : contentOpacityDesktop;
+  const sectionOpacity = isMobile ? sectionOpacityMobile : sectionOpacityDesktop;
   // Once the section fades out, disable pointer-events so scrolling passes through to Services
   const sectionPointerEvents = useTransform(sectionOpacity, (v) => v < 0.05 ? 'none' : 'auto');
   return (
@@ -176,6 +184,9 @@ export default function Hero({ smooth }) {
       <div className="absolute inset-0">
         <div className="absolute top-20 right-20 w-96 h-96 bg-[#00B8E6]/20 rounded-full blur-[120px]" />
         <div className="absolute bottom-20 left-20 w-64 h-64 bg-[#00B8E6]/10 rounded-full blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00B8E6]/8 rounded-full blur-[180px]" />
+        <div className="absolute top-10 left-1/3 w-72 h-72 bg-purple-500/10 rounded-full blur-[110px]" />
+        <div className="absolute bottom-10 right-1/3 w-80 h-80 bg-teal-500/8 rounded-full blur-[130px]" />
         <OrbitRings smooth={smooth} />
       </div>
 

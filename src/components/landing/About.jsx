@@ -26,7 +26,12 @@ const values = [
 
 export default function About() {
   return (
-    <section className="py-16 md:py-24 bg-[#0a0a0a]">
+    <section className="relative py-16 md:py-24 bg-[#0a0a0a]">
+      {/* Background glow orbs */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-[#00B8E6]/10 rounded-full blur-[170px] translate-x-1/4" />
+        <div className="absolute bottom-1/3 left-1/4 w-[550px] h-[550px] bg-teal-500/9 rounded-full blur-[160px] -translate-x-1/4" />
+      </div>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <span className="text-[#00B8E6] font-semibold tracking-wider uppercase text-sm">About HOOP</span>
