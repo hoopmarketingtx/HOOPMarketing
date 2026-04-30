@@ -90,10 +90,7 @@ export default function Contact({ selectedPackage, onClearPackage }) {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-[#0a0a0a] relative" id="contact">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#00B8E6]/10 rounded-full blur-[150px]" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#00B8E6]/5 rounded-full blur-[100px]" />
-
+    <section className="py-16 md:py-24 relative" id="contact">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-20">
           {/* Left Side Info */}

@@ -32,13 +32,34 @@ export default function Home() {
           <Services onSelectPackage={setSelectedPackage} />
         </motion.div>
         {/* Extra scroll height so Services stays pinned before Portfolio appears */}
-        <div className="h-[100vh]" />
+        <div className="h-[20vh]" />
       </div>
-      <Portfolio />
-      <Testimonials />
-      <About />
-      <Contact selectedPackage={selectedPackage} onClearPackage={() => setSelectedPackage(null)} />
-      <Footer />
+
+      {/* Single shared canvas for all content sections below the animation zone.
+          One bg layer + one global orb layer means orbs flow seamlessly across
+          Portfolio → Testimonials → About → Contact without section bg cutoffs. */}
+      <div className="relative bg-[#0a0a0a]">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          {/* Portfolio area */}
+          <div className="absolute top-[2%] right-[20%] w-[650px] h-[650px] bg-[#00B8E6]/10 rounded-full blur-[180px] translate-x-1/3" />
+          <div className="absolute top-[12%] left-[25%] w-[550px] h-[550px] bg-indigo-500/10 rounded-full blur-[160px] -translate-x-1/4" />
+          {/* Testimonials area */}
+          <div className="absolute top-[30%] left-[50%] w-[800px] h-[600px] bg-[#00B8E6]/8 rounded-full blur-[200px] -translate-x-1/2" />
+          <div className="absolute top-[38%] left-[20%] w-[450px] h-[450px] bg-rose-500/6 rounded-full blur-[150px]" />
+          <div className="absolute top-[40%] right-[20%] w-[450px] h-[450px] bg-indigo-500/8 rounded-full blur-[150px]" />
+          {/* About area */}
+          <div className="absolute top-[58%] right-[20%] w-[600px] h-[600px] bg-[#00B8E6]/10 rounded-full blur-[170px] translate-x-1/4" />
+          <div className="absolute top-[66%] left-[20%] w-[550px] h-[550px] bg-teal-500/8 rounded-full blur-[160px] -translate-x-1/4" />
+          {/* Contact area */}
+          <div className="absolute top-[82%] right-0 w-96 h-96 bg-[#00B8E6]/10 rounded-full blur-[150px]" />
+          <div className="absolute bottom-[4%] left-0 w-64 h-64 bg-[#00B8E6]/5 rounded-full blur-[100px]" />
+        </div>
+        <Portfolio />
+        <Testimonials />
+        <About />
+        <Contact selectedPackage={selectedPackage} onClearPackage={() => setSelectedPackage(null)} />
+        <Footer />
+      </div>
     </div>
   );
 }

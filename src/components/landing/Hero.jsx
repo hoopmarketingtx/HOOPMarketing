@@ -83,7 +83,7 @@ function InstagramSlideshow() {
   }, [postIndex, totalSlides]);
 
   return (
-    <div className="relative w-full max-w-sm mx-auto">
+    <div className="relative w-full max-w-[260px] sm:max-w-sm mx-auto">
       {/* Phone frame */}
       <a
         href="https://www.instagram.com/hoopmarketingtx"
@@ -118,7 +118,7 @@ function InstagramSlideshow() {
         {/* Slideshow */}
         <div
           className="relative overflow-hidden bg-[#0a0a0a]"
-          style={{ aspectRatio: '4/5' }}
+          style={{ aspectRatio: '4/5', maxHeight: '43vh' }}
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
@@ -177,7 +177,7 @@ export default function Hero({ smooth }) {
   const sectionPointerEvents = useTransform(sectionOpacity, (v) => v < 0.05 ? 'none' : 'auto');
   return (
     <motion.section
-      className="sticky top-0 min-h-screen bg-[#0a0a0a] flex items-center"
+      className="sticky top-0 min-h-screen bg-[#0a0a0a] flex items-center overflow-hidden"
       style={{ opacity: sectionOpacity, pointerEvents: sectionPointerEvents }}
     >
       {/* Background Elements */}
