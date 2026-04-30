@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { motion, useTransform } from 'framer-motion';
 
 const cssAnims = `
   /* Idle 3D gyroscope — all axes spinning */
@@ -21,15 +20,15 @@ const cssAnims = `
   @keyframes spinZ3 { from { transform: rotateZ(0deg); } to { transform: rotateZ(360deg);  } }
 `;
 
-export default function OrbitRings({ smooth }) {
+export default function OrbitRings() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled((prev) => {
-        if (!prev && y > 20) return true;   // crossed into scroll territory
-        if (prev && y < 10) return false;   // scrolled back to top — restore idle
+        if (!prev && y > 20) return true;
+        if (prev && y < 10) return false;
         return prev;
       });
     };
@@ -37,17 +36,11 @@ export default function OrbitRings({ smooth }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const scale       = useTransform(smooth, [0, 1], [1, 30]);
-  const ringOpacity = useTransform(smooth, [0, 0.15, 0.45, 0.70], [0.5, 1, 1, 0]);
-
   return (
     <div className="absolute inset-0 pointer-events-none" style={{ contain: 'paint', transform: 'translateZ(0)' }}>
       <style>{cssAnims}</style>
 
-      <motion.div
-        style={{ scale, opacity: ringOpacity, willChange: 'transform, opacity' }}
-        className="absolute inset-0 flex items-center justify-center"
-      >
+      <div className="absolute inset-0 flex items-center justify-center">
         {/* Wrapper: idle = tilted 3D gyroscope, scrolled = eases flat then freezes.
              Responsive: min(700px, 85vw) so rings never overflow mobile screens. */}
         <div
@@ -84,7 +77,7 @@ export default function OrbitRings({ smooth }) {
             <div className="absolute inset-0 rounded-full" style={{ border: '1.5px solid rgba(255,255,255,0.7)', boxShadow: '0 0 16px 5px rgba(255,255,255,0.22), inset 0 0 10px 3px rgba(255,255,255,0.1)' }} />
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

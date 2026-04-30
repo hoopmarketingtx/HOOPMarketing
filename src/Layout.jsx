@@ -33,13 +33,6 @@ export default function Layout({ children }) {
 
   const scrollToSection = (href) => {
     setMobileMenuOpen(false);
-    if (href === '#services') {
-      // Services lives inside the scroll-driven hero animation zone.
-      // scrollIntoView won't reveal it because its position is mid-hero.
-      // Scroll past the hero zone (150vh) so the Services section is fully visible.
-      window.scrollTo({ top: Math.round(1.5 * window.innerHeight), behavior: 'smooth' });
-      return;
-    }
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });

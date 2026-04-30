@@ -1,9 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useTransform } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import OrbitRings from './OrbitRings';
-import { useIsMobile } from '@/hooks/use-mobile';
 
 // Each entry is one Instagram carousel post — add more objects for more posts.
 // slides: array of image paths for that post's carousel frames.
@@ -163,34 +162,15 @@ function InstagramSlideshow() {
   );
 }
 
-export default function Hero({ smooth }) {
-  const isMobile = useIsMobile();
-  // On mobile, delay the fade so the Instagram feed stays visible long enough
-  // for the user to scroll through it before the hero begins fading out.
-  const contentOpacityDesktop = useTransform(smooth, [0.4, 0.7], [1, 0]);
-  const contentOpacityMobile = useTransform(smooth, [0.6, 0.88], [1, 0]);
-  const sectionOpacityDesktop = useTransform(smooth, [0.65, 0.9], [1, 0]);
-  const sectionOpacityMobile = useTransform(smooth, [0.8, 0.97], [1, 0]);
-  const contentOpacity = isMobile ? contentOpacityMobile : contentOpacityDesktop;
-  const sectionOpacity = isMobile ? sectionOpacityMobile : sectionOpacityDesktop;
-  // Once the section fades out, disable pointer-events so scrolling passes through to Services
-  const sectionPointerEvents = useTransform(sectionOpacity, (v) => v < 0.05 ? 'none' : 'auto');
+export default function Hero() {
   return (
-    <motion.section
-      className="sticky top-0 min-h-screen bg-[#0a0a0a] flex items-center overflow-hidden"
-      style={{ opacity: sectionOpacity, pointerEvents: sectionPointerEvents }}
-    >
+    <section className="relative min-h-screen bg-transparent flex items-center">
       {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 right-20 w-96 h-96 bg-[#00B8E6]/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-20 left-20 w-64 h-64 bg-[#00B8E6]/10 rounded-full blur-[100px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00B8E6]/8 rounded-full blur-[180px]" />
-        <div className="absolute top-10 left-1/3 w-72 h-72 bg-purple-500/10 rounded-full blur-[110px]" />
-        <div className="absolute bottom-10 right-1/3 w-80 h-80 bg-teal-500/8 rounded-full blur-[130px]" />
-        <OrbitRings smooth={smooth} />
+      <div className="absolute inset-0 pointer-events-none">
+        <OrbitRings />
       </div>
 
-      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-24 pb-12 lg:pt-28 lg:pb-20 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-24 pb-12 lg:pt-28 lg:pb-20 w-full">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -264,7 +244,7 @@ export default function Hero({ smooth }) {
             <InstagramSlideshow />
           </motion.div>
         </div>
-      </motion.div>
-    </motion.section>
+      </div>
+    </section>
   );
 }
