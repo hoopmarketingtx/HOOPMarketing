@@ -8,14 +8,14 @@
   "theme_color": "#00B8E6",
   "icons": [
     {
-      "src": "/assets/HOOP-Chrome-Tab-Favicon.png",
+      "src": "/assets/HOOP-Chrome-Tab-Favicon.webp",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/webp"
     },
     {
-      "src": "/assets/HOOP-ICON.png",
+      "src": "/assets/HOOP-ICON.webp",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/webp"
     }
   ]
 }
