@@ -5,7 +5,7 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { createPageUrl } from './utils';
 
-const headerLogo = '/assets/HOOP-Abstract-Logo.png';
+const headerLogo = '/assets/HOOP-Abstract-Logo.webp';
 
 const navLinks = [
   { name: 'Services', href: '#services' },

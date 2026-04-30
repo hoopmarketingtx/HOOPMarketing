@@ -9,30 +9,30 @@ import OrbitRings from './OrbitRings';
 const instagramPosts = [
   {
     slides: [
-      '/assets/3.31.26/Rick Astley Post 1.png',
-      '/assets/3.31.26/Rick Astley Post 2.png',
-      '/assets/3.31.26/Rick Astley Post 3.png',
-      '/assets/3.31.26/Rick Astley Post 4.png',
-      '/assets/3.31.26/Rick Astley Post 5.png',
-      '/assets/3.31.26/Rick Astley Post 6.png',
+      '/assets/3.31.26/Rick Astley Post 1.webp',
+      '/assets/3.31.26/Rick Astley Post 2.webp',
+      '/assets/3.31.26/Rick Astley Post 3.webp',
+      '/assets/3.31.26/Rick Astley Post 4.webp',
+      '/assets/3.31.26/Rick Astley Post 5.webp',
+      '/assets/3.31.26/Rick Astley Post 6.webp',
     ],
   },
   {
     slides: [
-      '/assets/3.24.26/1.png',
-      '/assets/3.24.26/2.png',
-      '/assets/3.24.26/3.png',
-      '/assets/3.24.26/4.png',
-      '/assets/3.24.26/5.png',
+      '/assets/3.24.26/1.webp',
+      '/assets/3.24.26/2.webp',
+      '/assets/3.24.26/3.webp',
+      '/assets/3.24.26/4.webp',
+      '/assets/3.24.26/5.webp',
     ],
   },
   {
     slides: [
-      '/assets/3.16.26/3 Marketing Mistakes 1.png',
-      '/assets/3.16.26/3 Marketing Mistakes 2.png',
-      '/assets/3.16.26/3 Marketing Mistakes 3.png',
-      '/assets/3.16.26/3 Marketing Mistakes 4.png',
-      '/assets/3.16.26/3 Marketing Mistakes 5.png',
+      '/assets/3.16.26/3 Marketing Mistakes 1.webp',
+      '/assets/3.16.26/3 Marketing Mistakes 2.webp',
+      '/assets/3.16.26/3 Marketing Mistakes 3.webp',
+      '/assets/3.16.26/3 Marketing Mistakes 4.webp',
+      '/assets/3.16.26/3 Marketing Mistakes 5.webp',
     ],
   },
 ];
@@ -131,6 +131,7 @@ function InstagramSlideshow() {
               exit={{ opacity: 0, scale: 0.97 }}
               transition={{ duration: 0.5 }}
               className="w-full h-full object-cover absolute inset-0"
+              onLoad={() => window.__hoopResolveHero?.()}
             />
           </AnimatePresence>
 

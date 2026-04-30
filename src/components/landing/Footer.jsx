@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Instagram } from 'lucide-react';
 
-const hoopLogo = '/assets/HOOP-LOGO-White.png';
+const hoopLogo = '/assets/HOOP-LOGO-White.webp';
 
 export default function Footer() {
   return (

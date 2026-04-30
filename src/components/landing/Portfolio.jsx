@@ -36,11 +36,11 @@ const projects = [
     size: "large",
     expandable: true,
     images: [
-      { label: "Logos", src: "/assets/La Casa de Las Calacas Brand Logos.png" },
-      { label: "Illustrated Assets", src: "/assets/La Casa de Las Calacas Brand Illustrated Assets.png" },
-      { label: "Sticker Mockups", src: "/assets/La Casa de Las Calacas Brand Sticker Mockups.png" },
-      { label: "Menu Design", src: "/assets/La Casa de Las Calacas Brand Menu Design.png" },
-      { label: "Merch / T-Shirt", src: "/assets/La Casa de Las Calacas Brand T-Shirt.png" },
+      { label: "Logos", src: "/assets/La Casa de Las Calacas Brand Logos.webp" },
+      { label: "Illustrated Assets", src: "/assets/La Casa de Las Calacas Brand Illustrated Assets.webp" },
+      { label: "Sticker Mockups", src: "/assets/La Casa de Las Calacas Brand Sticker Mockups.webp" },
+      { label: "Menu Design", src: "/assets/La Casa de Las Calacas Brand Menu Design.webp" },
+      { label: "Merch / T-Shirt", src: "/assets/La Casa de Las Calacas Brand T-Shirt.webp" },
     ],
   },
   {
@@ -49,9 +49,9 @@ const projects = [
     size: "small",
     expandable: true,
     images: [
-      { label: "Storefront", src: "/assets/RedInk.GOP-Storefront.png" },
-      { label: "Business Card", src: "/assets/RedInk.GOP-Business-Card-Mockup.png" },
-      { label: "LinkedIn Ad", src: "/assets/RedInk.GOP-LinkedIn-Ad-Mockup.png" },
+      { label: "Storefront", src: "/assets/RedInk.GOP-Storefront.webp" },
+      { label: "Business Card", src: "/assets/RedInk.GOP-Business-Card-Mockup.webp" },
+      { label: "LinkedIn Ad", src: "/assets/RedInk.GOP-LinkedIn-Ad-Mockup.webp" },
     ],
   },
   {
@@ -60,11 +60,11 @@ const projects = [
     size: "small",
     expandable: true,
     images: [
-      { label: "Yard Sign", src: "/assets/TRL Yard Sign.png" },
-      { label: "Business Card", src: "/assets/TRL BC.png" },
-      { label: "Facebook Ad", src: "/assets/TRL FB Ad.png" },
-      { label: "Instagram Posts", src: "/assets/TRL Insta Posts.png" },
-      { label: "EDDM Mailer", src: "/assets/TRL EDDM Mailer.png" },
+      { label: "Yard Sign", src: "/assets/TRL Yard Sign.webp" },
+      { label: "Business Card", src: "/assets/TRL BC.webp" },
+      { label: "Facebook Ad", src: "/assets/TRL FB Ad.webp" },
+      { label: "Instagram Posts", src: "/assets/TRL Insta Posts.webp" },
+      { label: "EDDM Mailer", src: "/assets/TRL EDDM Mailer.webp" },
     ],
   },
 ];
