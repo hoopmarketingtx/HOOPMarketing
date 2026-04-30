@@ -496,9 +496,9 @@ export default function Services({ onSelectPackage }) {
 
   return (
     <>
-      <section className="relative pt-24 pb-16 md:py-24 bg-[#0a0a0a]" id="services" style={{ scrollMarginTop: '80px' }}>
+      <section className="relative pt-24 pb-16 md:py-24" id="services" style={{ scrollMarginTop: '80px' }}>
         {/* Background glow orbs */}
-        <div className="pointer-events-none absolute inset-0">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 left-1/3 w-[700px] h-[700px] bg-[#00B8E6]/12 rounded-full blur-[180px] -translate-x-1/2 -translate-y-1/2" />
           <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[160px] translate-x-1/4" />
         </div>

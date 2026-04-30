@@ -162,9 +162,9 @@ function InstagramSlideshow() {
   );
 }
 
-export default function Hero({ smooth }) {
+export default function Hero({ smooth, contentOpacity }) {
   return (
-    <section className="relative min-h-screen bg-[#0a0a0a] flex items-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 right-20 w-96 h-96 bg-[#00B8E6]/20 rounded-full blur-[120px]" />
@@ -175,7 +175,7 @@ export default function Hero({ smooth }) {
         <OrbitRings smooth={smooth} />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-24 pb-12 lg:pt-28 lg:pb-20 w-full">
+      <motion.div style={{ opacity: contentOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-24 pb-12 lg:pt-28 lg:pb-20 w-full">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -249,7 +249,7 @@ export default function Hero({ smooth }) {
             <InstagramSlideshow />
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
