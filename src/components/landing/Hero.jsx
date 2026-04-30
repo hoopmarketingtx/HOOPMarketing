@@ -164,16 +164,18 @@ function InstagramSlideshow() {
 
 export default function Hero({ smooth, contentOpacity }) {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
+    <section className="relative min-h-screen flex items-center">
+      {/* Static background blobs — clipped to this section */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-20 w-96 h-96 bg-[#00B8E6]/20 rounded-full blur-[120px]" />
         <div className="absolute bottom-20 left-20 w-64 h-64 bg-[#00B8E6]/10 rounded-full blur-[100px]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00B8E6]/8 rounded-full blur-[180px]" />
         <div className="absolute top-10 left-1/3 w-72 h-72 bg-purple-500/10 rounded-full blur-[110px]" />
         <div className="absolute bottom-10 right-1/3 w-80 h-80 bg-teal-500/8 rounded-full blur-[130px]" />
-        <OrbitRings smooth={smooth} />
       </div>
+      {/* OrbitRings lives OUTSIDE the clipping container so rings can expand
+          freely past the section boundary, fading out as the user scrolls. */}
+      <OrbitRings smooth={smooth} />
 
       <motion.div style={{ opacity: contentOpacity }} className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-24 pb-12 lg:pt-28 lg:pb-20 w-full">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">

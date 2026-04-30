@@ -41,7 +41,7 @@ export default function OrbitRings({ smooth }) {
   const ringOpacity = useTransform(smooth, [0, 0.15, 0.45, 0.70], [0.5, 1, 1, 0]);
 
   return (
-    <div className="absolute inset-0 pointer-events-none" style={{ contain: 'paint', transform: 'translateZ(0)' }}>
+    <div className="fixed inset-0 pointer-events-none" style={{ transform: 'translateZ(0)', zIndex: 0 }}>
       <style>{cssAnims}</style>
 
       <motion.div
