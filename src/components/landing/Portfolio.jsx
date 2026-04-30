@@ -229,8 +229,7 @@ export default function Portfolio() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0 }}
             className="flex flex-col md:flex-row md:items-end md:justify-between mb-10"
           >
             <div>

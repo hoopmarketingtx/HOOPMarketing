@@ -60,8 +60,7 @@ export default function About() {
                   key={value.title}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  viewport={{ once: true, amount: 0 }}
                   className="flex flex-col gap-4"
                 >
                   <div className="w-12 h-12 bg-[#00B8E6]/10 rounded-xl flex items-center justify-center flex-shrink-0">

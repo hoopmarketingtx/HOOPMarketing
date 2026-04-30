@@ -506,7 +506,7 @@ export default function Services({ onSelectPackage }) {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
@@ -526,7 +526,7 @@ export default function Services({ onSelectPackage }) {
                 key={service.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 onClick={() => setOpenService(service.title)}
                 className="group relative bg-white/5 hover:bg-white/10 rounded-3xl p-8 transition-all duration-500 cursor-pointer overflow-hidden"
