@@ -41,6 +41,8 @@ function InstagramSlideshow() {
   const [postIndex, setPostIndex] = useState(0);
   const [slideIndex, setSlideIndex] = useState(0);
   const touchStartX = useRef(null);
+  const containerRef = useRef(null);
+  const visibleRef = useRef(true);
 
   const post = instagramPosts[postIndex];
   const totalSlides = post.slides.length;
@@ -75,14 +77,23 @@ function InstagramSlideshow() {
     setSlideIndex(0);
   }, [postIndex]);
 
-  // Auto-advance slides
+  // Auto-advance slides — pauses when scrolled off-screen to save CPU/battery
   useEffect(() => {
-    const id = setInterval(goNext, 4000);
+    const el = containerRef.current;
+    if (el) {
+      const obs = new IntersectionObserver(([e]) => { visibleRef.current = e.isIntersecting; }, { threshold: 0 });
+      obs.observe(el);
+      return () => obs.disconnect();
+    }
+  }, []);
+
+  useEffect(() => {
+    const id = setInterval(() => { if (visibleRef.current) goNext(); }, 4000);
     return () => clearInterval(id);
   }, [postIndex, totalSlides]);
 
   return (
-    <div className="relative w-full max-w-[260px] sm:max-w-sm mx-auto">
+    <div ref={containerRef} className="relative w-full max-w-[260px] sm:max-w-sm mx-auto">
       {/* Phone frame */}
       <a
         href="https://www.instagram.com/hoopmarketingtx"

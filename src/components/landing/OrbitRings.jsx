@@ -22,6 +22,10 @@ const cssAnims = `
 `;
 
 export default function OrbitRings({ smooth }) {
+  // Skip all GPU-intensive animations on mobile — 6 simultaneous CSS keyframe
+  // animations on a fixed+scaled element causes severe frame drops on phones.
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -39,6 +43,9 @@ export default function OrbitRings({ smooth }) {
 
   const scale       = useTransform(smooth, [0, 1], [1, 30]);
   const ringOpacity = useTransform(smooth, [0, 0.15, 0.45, 0.70], [0.5, 1, 1, 0]);
+
+  // Return null after hooks (rules of hooks satisfied above)
+  if (isMobile) return null;
 
   return (
     <div className="fixed inset-0 pointer-events-none" style={{ transform: 'translateZ(0)', zIndex: 0 }}>

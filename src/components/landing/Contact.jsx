@@ -97,7 +97,7 @@ export default function Contact({ selectedPackage, onClearPackage }) {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0 }}
             transition={{ duration: 0.6 }}
           >
             <span className="text-[#00B8E6] font-semibold tracking-wider uppercase text-sm">Get In Touch</span>
@@ -129,7 +129,7 @@ export default function Contact({ selectedPackage, onClearPackage }) {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-10">

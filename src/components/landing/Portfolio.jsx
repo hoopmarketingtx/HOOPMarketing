@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -118,15 +118,23 @@ function WebsiteCard({ site, index }) {
 
 function SlideshowCover({ images, isLarge }) {
   const [current, setCurrent] = useState(0);
+  const ref = useRef(null);
+  const visibleRef = useRef(false);
 
   useEffect(() => {
-    if (images.length <= 1) return;
-    const id = setInterval(() => setCurrent((p) => (p + 1) % images.length), 3000);
-    return () => clearInterval(id);
+    const el = ref.current;
+    if (!el || images.length <= 1) return;
+    const obs = new IntersectionObserver(([e]) => { visibleRef.current = e.isIntersecting; }, { threshold: 0 });
+    obs.observe(el);
+    const id = setInterval(() => {
+      if (visibleRef.current) setCurrent((p) => (p + 1) % images.length);
+    }, 3000);
+    return () => { clearInterval(id); obs.disconnect(); };
   }, [images.length]);
 
   return (
     <div
+      ref={ref}
       className={`${
         isLarge ? 'aspect-[4/3] md:aspect-auto md:h-full min-h-[300px]' : 'aspect-[4/3]'
       } relative overflow-hidden`}
