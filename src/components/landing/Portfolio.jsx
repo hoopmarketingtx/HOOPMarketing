@@ -136,6 +136,7 @@ function SlideshowCover({ images, isLarge }) {
           key={img.src}
           src={img.src}
           alt={img.label}
+          loading="lazy"
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           style={{ opacity: i === current ? 1 : 0, transition: 'opacity 1s ease-in-out, transform 700ms ease' }}
         />
