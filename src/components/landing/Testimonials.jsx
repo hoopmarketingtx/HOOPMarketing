@@ -32,16 +32,16 @@ export default function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0 }}
         >
-          <span className="text-[#00B8E6] font-semibold tracking-wider uppercase text-sm">Testimonials</span>
+          <span className="text-white/60 font-semibold tracking-wider uppercase text-sm">Testimonials</span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 tracking-tight">
             What Our
             <br />
-            <span className="bg-gradient-to-r from-[#00B8E6] to-[#1F4E5F] bg-clip-text text-transparent">Clients Say</span>
+            <span className="text-white">Clients Say</span>
           </h2>
         </motion.div>
 
         <div className="relative max-w-4xl mx-auto">
-          <div className="absolute -top-12 left-0 text-[#00B8E6]/20 drop-shadow-[0_0_18px_rgba(0,184,230,0.5)]">
+          <div className="absolute -top-12 left-0 text-white/10">
             <Quote className="w-32 h-32" />
           </div>
 
@@ -59,7 +59,7 @@ export default function Testimonials() {
               </p>
 
               <div className="mt-12 flex flex-col items-center">
-                <div className="w-20 h-20 rounded-full bg-white/5 border-4 border-[#00B8E6]/20 flex items-center justify-center overflow-hidden p-2">
+                <div className="w-20 h-20 rounded-full bg-white/5 border-4 border-white/15 flex items-center justify-center overflow-hidden p-2">
                   <img
                     src={testimonials[current].logo}
                     alt={testimonials[current].role}
@@ -79,7 +79,7 @@ export default function Testimonials() {
               variant="outline"
               size="icon"
               onClick={prev}
-              className="w-12 h-12 rounded-full border-white/10 text-white/50 hover:border-[#00B8E6] hover:text-[#00B8E6] bg-transparent"
+              className="w-12 h-12 rounded-full border-white/10 text-white/50 hover:border-white hover:text-white bg-transparent"
             >
               <ChevronLeft className="w-5 h-5" />
             </Button>
@@ -90,7 +90,7 @@ export default function Testimonials() {
                   key={index}
                   onClick={() => setCurrent(index)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === current ? 'bg-[#00B8E6] w-8' : 'bg-white/20'
+                    index === current ? 'bg-white w-8' : 'bg-white/20'
                   }`}
                 />
               ))}
@@ -100,7 +100,7 @@ export default function Testimonials() {
               variant="outline"
               size="icon"
               onClick={next}
-              className="w-12 h-12 rounded-full border-white/10 text-white/50 hover:border-[#00B8E6] hover:text-[#00B8E6] bg-transparent"
+              className="w-12 h-12 rounded-full border-white/10 text-white/50 hover:border-white hover:text-white bg-transparent"
             >
               <ChevronRight className="w-5 h-5" />
             </Button>

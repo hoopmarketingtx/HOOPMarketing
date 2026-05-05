@@ -33,7 +33,7 @@ export default function Footer() {
               href="https://www.instagram.com/hoopmarketingtx"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-white/5 hover:bg-gradient-to-r hover:from-[#00B8E6] hover:to-[#1F4E5F] text-white/60 hover:text-white transition-all duration-300 rounded-xl px-4 py-2.5"
+              className="flex items-center gap-3 bg-white/5 hover:bg-white/15 text-white/60 hover:text-white transition-all duration-300 rounded-xl px-4 py-2.5"
             >
               <Instagram className="w-5 h-5 flex-shrink-0" />
               <span className="text-sm font-medium">@hoopmarketingtx</span>

@@ -7,6 +7,12 @@ import About from '@/components/landing/About';
 import Testimonials from '@/components/landing/Testimonials';
 import Contact from '@/components/landing/Contact';
 import Footer from '@/components/landing/Footer';
+import WavyRingDecor from '@/components/landing/WavyRingDecor';
+import RibbonBanner from '@/components/landing/RibbonBanner';
+
+const RIBBON_1 = ['Bold Strategy', 'Real Results', 'No Fluff', "DFW's Best", 'Built to Grow', 'Dominate Your Market', 'Results-Driven Marketing', 'Your Brand, Elevated'];
+const RIBBON_2 = ['Design That Converts', 'Social Media That Works', 'Creative That Hits', 'Built Different', 'Texas Proud', 'Results You Can See', 'Strategy First', 'Your Brand, Amplified'];
+const RIBBON_3 = ["Let's Build Something", 'Ready to Dominate?', 'Your Next Move', 'Start Today', 'Limited Spots Available', 'DFW Marketing', 'Bold Brands Win', 'Make Your Mark'];
 
 export default function Home() {
   const [selectedPackage, setSelectedPackage] = useState(null);
@@ -18,45 +24,73 @@ export default function Home() {
   const heroContentOpacity = useTransform(smooth, [0.35, 0.75], [1, 0]);
 
   return (
-    // Single root canvas — one bg, one global orb layer covering the full page.
-    // All sections are transparent so orbs bleed freely across every boundary.
+    // Single root canvas — one bg, one global decor layer covering the full page.
     <div className="relative bg-[#0a0a0a]">
-      {/* Orb layer — desktop only. On mobile these 150-200px CSS blurs each
-          force a separate GPU compositing layer; 12 of them causes severe
-          scroll jank. Mobile gets 2 small, cheap glows instead. */}
+      {/* Wavy ring decorative layer — replaces the old colored blur orbs.
+          Desktop only (same rationale as before: mobile has limited GPU). */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Mobile: 2 lightweight glows only */}
-        <div className="md:hidden absolute top-[5%] right-0 w-[200px] h-[200px] bg-[#00B8E6]/12 rounded-full blur-[60px]" />
-        <div className="md:hidden absolute top-[40%] left-0 w-[180px] h-[180px] bg-[#00B8E6]/8 rounded-full blur-[60px]" />
-        {/* Desktop: full ambient orb layer */}
+        {/* Mobile: 2 lightweight subtle rings only */}
+        <div className="md:hidden absolute top-[5%] right-[-10%]">
+          <WavyRingDecor size={300} opacity={0.07} blur={18} rotate={15} />
+        </div>
+        <div className="md:hidden absolute top-[42%] left-[-12%]">
+          <WavyRingDecor size={260} opacity={0.05} blur={20} rotate={-8} />
+        </div>
+        {/* Desktop: full ambient ring layer */}
         {/* Hero area */}
-        <div className="hidden md:block absolute top-[3%] right-[20%] w-[500px] h-[500px] bg-[#00B8E6]/15 rounded-full blur-[150px] translate-x-1/3" />
-        <div className="hidden md:block absolute top-[10%] left-[25%] w-[450px] h-[450px] bg-purple-500/10 rounded-full blur-[140px] -translate-x-1/4" />
+        <div className="hidden md:block absolute top-[-4%] right-[-6%]">
+          <WavyRingDecor size={620} opacity={0.09} blur={22} rotate={18} />
+        </div>
+        <div className="hidden md:block absolute top-[4%] left-[-8%]">
+          <WavyRingDecor size={500} opacity={0.06} blur={28} rotate={-12} />
+        </div>
         {/* Services area */}
-        <div className="hidden md:block absolute top-[22%] left-[30%] w-[700px] h-[600px] bg-[#00B8E6]/10 rounded-full blur-[180px] -translate-x-1/3" />
-        <div className="hidden md:block absolute top-[28%] right-[25%] w-[550px] h-[550px] bg-indigo-500/10 rounded-full blur-[160px] translate-x-1/4" />
+        <div className="hidden md:block absolute top-[22%] left-[35%]">
+          <WavyRingDecor size={680} opacity={0.05} blur={32} rotate={6} />
+        </div>
+        <div className="hidden md:block absolute top-[30%] right-[-10%]">
+          <WavyRingDecor size={520} opacity={0.07} blur={24} rotate={-22} />
+        </div>
         {/* Portfolio area */}
-        <div className="hidden md:block absolute top-[37%] right-[20%] w-[650px] h-[650px] bg-[#00B8E6]/10 rounded-full blur-[180px] translate-x-1/3" />
-        <div className="hidden md:block absolute top-[44%] left-[20%] w-[550px] h-[550px] bg-indigo-500/10 rounded-full blur-[160px] -translate-x-1/4" />
-        {/* Testimonials area */}
-        <div className="hidden md:block absolute top-[53%] left-[50%] w-[800px] h-[600px] bg-[#00B8E6]/8 rounded-full blur-[200px] -translate-x-1/2" />
-        <div className="hidden md:block absolute top-[57%] left-[20%] w-[450px] h-[450px] bg-rose-500/6 rounded-full blur-[150px]" />
-        {/* About area */}
-        <div className="hidden md:block absolute top-[66%] right-[20%] w-[600px] h-[600px] bg-[#00B8E6]/10 rounded-full blur-[170px] translate-x-1/4" />
-        <div className="hidden md:block absolute top-[72%] left-[20%] w-[550px] h-[550px] bg-teal-500/8 rounded-full blur-[160px] -translate-x-1/4" />
+        <div className="hidden md:block absolute top-[42%] left-[-6%]">
+          <WavyRingDecor size={560} opacity={0.06} blur={26} rotate={10} />
+        </div>
+        <div className="hidden md:block absolute top-[50%] right-[8%]">
+          <WavyRingDecor size={480} opacity={0.07} blur={20} rotate={-5} />
+        </div>
+        {/* Testimonials / About area */}
+        <div className="hidden md:block absolute top-[62%] left-[42%]">
+          <WavyRingDecor size={600} opacity={0.05} blur={30} rotate={14} />
+        </div>
+        <div className="hidden md:block absolute top-[70%] left-[-8%]">
+          <WavyRingDecor size={460} opacity={0.07} blur={22} rotate={-18} />
+        </div>
         {/* Contact area */}
-        <div className="hidden md:block absolute top-[83%] right-0 w-96 h-96 bg-[#00B8E6]/10 rounded-full blur-[150px]" />
-        <div className="hidden md:block absolute bottom-[4%] left-0 w-64 h-64 bg-[#00B8E6]/5 rounded-full blur-[100px]" />
+        <div className="hidden md:block absolute top-[82%] right-[-8%]">
+          <WavyRingDecor size={520} opacity={0.08} blur={26} rotate={25} />
+        </div>
+        <div className="hidden md:block absolute bottom-[1%] left-[15%]">
+          <WavyRingDecor size={400} opacity={0.05} blur={32} rotate={-6} />
+        </div>
       </div>
 
       {/* All sections stack in natural flow — no sticky, no overlays */}
       <div ref={heroRef} className="relative">
         <Hero smooth={smooth} contentOpacity={heroContentOpacity} />
       </div>
+
+      <RibbonBanner phrases={RIBBON_1} direction="left" rotate={-2} speed={38} animKey="r1" />
+
       <Services onSelectPackage={setSelectedPackage} />
       <Portfolio />
+
+      <RibbonBanner phrases={RIBBON_2} direction="right" rotate={2} speed={42} animKey="r2" />
+
       <Testimonials />
       <About />
+
+      <RibbonBanner phrases={RIBBON_3} direction="left" rotate={-1.5} speed={36} animKey="r3" />
+
       <Contact selectedPackage={selectedPackage} onClearPackage={() => setSelectedPackage(null)} />
       <Footer />
     </div>

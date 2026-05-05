@@ -100,11 +100,11 @@ export default function Contact({ selectedPackage, onClearPackage }) {
             viewport={{ once: true, amount: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-[#00B8E6] font-semibold tracking-wider uppercase text-sm">Get In Touch</span>
+            <span className="text-white/60 font-semibold tracking-wider uppercase text-sm">Get In Touch</span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-4 tracking-tight">
               Ready To
               <br />
-              <span className="bg-gradient-to-r from-[#00B8E6] to-[#1F4E5F] bg-clip-text text-transparent">Dominate?</span>
+              <span className="bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">Dominate?</span>
             </h2>
             <p className="text-xl text-white/60 mt-8 max-w-lg">
               We take on a limited number of projects each month to stay hands-on and strategic. If it looks like a strong fit, you'll hear from us within 24–48 hours.
@@ -114,12 +114,12 @@ export default function Contact({ selectedPackage, onClearPackage }) {
                 href="mailto:hoopmarketingtx@gmail.com"
                 className="inline-flex items-center gap-4 text-white/80 group rounded-2xl px-4 py-3 -mx-4 transition-all duration-300 hover:bg-white/5 hover:text-white"
               >
-                <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:bg-[#00B8E6]/20 group-hover:scale-110">
-                  <Mail className="w-5 h-5 text-[#00B8E6]" />
+                  <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:bg-white/15 group-hover:scale-110">
+                  <Mail className="w-5 h-5 text-white/70" />
                 </div>
                 <div>
-                  <div className="text-white/50 text-sm transition-colors duration-300 group-hover:text-[#00B8E6]/70">Email Us</div>
-                  <div className="text-white font-medium transition-colors duration-300 group-hover:text-[#00B8E6]">hoopmarketingtx@gmail.com</div>
+                  <div className="text-white/50 text-sm transition-colors duration-300 group-hover:text-white/70">Email Us</div>
+                  <div className="text-white font-medium transition-colors duration-300 group-hover:text-white">hoopmarketingtx@gmail.com</div>
                 </div>
               </a>
             </div>
@@ -134,9 +134,9 @@ export default function Contact({ selectedPackage, onClearPackage }) {
           >
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-10">
               {selectedPackage && !submitted && (
-                <div className="flex items-center justify-between bg-[#00B8E6]/10 border border-[#00B8E6]/30 rounded-2xl px-4 py-3 mb-6">
+                <div className="flex items-center justify-between bg-white/10 border border-white/25 rounded-2xl px-4 py-3 mb-6">
                   <div>
-                    <p className="text-[#00B8E6] text-xs font-semibold uppercase tracking-wider mb-0.5">Selected Package</p>
+                    <p className="text-white/60 text-xs font-semibold uppercase tracking-wider mb-0.5">Selected Package</p>
                     <p className="text-white font-semibold text-sm">{selectedPackage.service} — {selectedPackage.tier}</p>
                     {selectedPackage.designBrief && (
                       <p className="text-white/50 text-xs mt-0.5">{selectedPackage.designBrief}</p>
@@ -152,7 +152,7 @@ export default function Contact({ selectedPackage, onClearPackage }) {
               )}
               {submitted ? (
                 <div className="flex flex-col items-center justify-center py-16 text-center">
-                  <CheckCircle2 className="w-16 h-16 text-[#00B8E6] mb-6" />
+                    <CheckCircle2 className="w-16 h-16 text-white mb-6" />
                   <h3 className="text-2xl font-bold text-white mb-3">You're on our radar.</h3>
                   <p className="text-white/60 max-w-sm">
                     We'll review your submission and reach out within 24–48 hours if it looks like a great fit.
@@ -168,7 +168,7 @@ export default function Contact({ selectedPackage, onClearPackage }) {
                     </div>
                     <div className="w-full h-1 bg-white/10 rounded-full">
                       <div
-                        className="h-1 bg-gradient-to-r from-[#00B8E6] to-[#1F4E5F] rounded-full transition-all duration-500"
+                        className="h-1 bg-white rounded-full transition-all duration-500"
                         style={{ width: `${(displayStep / totalDisplaySteps) * 100}%` }}
                       />
                     </div>
@@ -208,7 +208,7 @@ export default function Contact({ selectedPackage, onClearPackage }) {
                               onClick={() => toggleService(service)}
                               className={`w-full text-left px-4 py-3 rounded-xl border transition-all duration-200 text-sm ${
                                 formData.services.includes(service)
-                                  ? 'border-[#00B8E6] bg-[#00B8E6]/10 text-white'
+                                  ? 'border-white/50 bg-white/10 text-white'
                                   : 'border-white/10 bg-white/5 text-white/60 hover:border-white/30'
                               }`}
                             >
@@ -230,9 +230,9 @@ export default function Contact({ selectedPackage, onClearPackage }) {
                               onClick={() => setFormData({ ...formData, budget })}
                               className={`w-full text-left px-4 py-3 rounded-xl border transition-all duration-200 text-sm ${
                                 formData.budget === budget
-                                  ? 'border-[#00B8E6] bg-[#00B8E6]/10 text-white'
+                                  ? 'border-white/50 bg-white/10 text-white'
                                   : 'border-white/10 bg-white/5 text-white/60 hover:border-white/30'
-                              }`}
+                            }`}
                             >
                               {budget}
                             </button>
@@ -252,9 +252,9 @@ export default function Contact({ selectedPackage, onClearPackage }) {
                               onClick={() => setFormData({ ...formData, timing })}
                               className={`w-full text-left px-4 py-3 rounded-xl border transition-all duration-200 text-sm ${
                                 formData.timing === timing
-                                  ? 'border-[#00B8E6] bg-[#00B8E6]/10 text-white'
+                                  ? 'border-white/50 bg-white/10 text-white'
                                   : 'border-white/10 bg-white/5 text-white/60 hover:border-white/30'
-                              }`}
+                            }`}
                             >
                               {timing}
                             </button>
@@ -296,7 +296,7 @@ export default function Contact({ selectedPackage, onClearPackage }) {
                       <Button
                         onClick={goNext}
                         disabled={!canAdvance()}
-                        className="flex-1 bg-gradient-to-r from-[#00B8E6] to-[#1F4E5F] hover:opacity-90 text-white h-12 rounded-xl group disabled:opacity-40"
+                        className="flex-1 bg-white hover:bg-white/90 text-black h-12 rounded-xl group disabled:opacity-40"
                       >
                         Continue <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </Button>
@@ -304,7 +304,7 @@ export default function Contact({ selectedPackage, onClearPackage }) {
                       <Button
                         onClick={handleSubmit}
                         disabled={isSubmitting}
-                        className="flex-1 bg-gradient-to-r from-[#00B8E6] to-[#1F4E5F] hover:opacity-90 text-white h-12 rounded-xl group disabled:opacity-50"
+                        className="flex-1 bg-white hover:bg-white/90 text-black h-12 rounded-xl group disabled:opacity-50"
                       >
                         {isSubmitting ? 'Sending...' : <>Let's Work Together <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" /></>}
                       </Button>

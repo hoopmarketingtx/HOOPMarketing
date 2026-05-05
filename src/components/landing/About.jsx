@@ -29,11 +29,11 @@ export default function About() {
     <section className="relative py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
-          <span className="text-[#00B8E6] font-semibold tracking-wider uppercase text-sm">About HOOP</span>
+          <span className="text-white/60 font-semibold tracking-wider uppercase text-sm">About HOOP</span>
           <h2 id="about" className="text-4xl md:text-5xl font-bold text-white mt-4 tracking-tight leading-tight" style={{ scrollMarginTop: '100px' }}>
             Built Different.
             <br />
-            <span className="bg-gradient-to-r from-[#00B8E6] to-[#1F4E5F] bg-clip-text text-transparent">Built for You.</span>
+            <span className="text-white">Built for You.</span>
           </h2>
 
           <p className="text-xl text-white/60 mt-8 leading-relaxed">
@@ -48,7 +48,7 @@ export default function About() {
             No fluff. No empty promises. Just strategies that work.
           </p>
 
-          <p className="text-lg text-[#00B8E6]/70 mt-4 leading-relaxed italic">
+          <p className="text-lg text-white/50 mt-4 leading-relaxed italic">
             There are a lot of hoops in marketing. We handle them so you don't have to.
           </p>
 
@@ -63,8 +63,8 @@ export default function About() {
                   viewport={{ once: true, amount: 0 }}
                   className="flex flex-col gap-4"
                 >
-                  <div className="w-12 h-12 bg-[#00B8E6]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-6 h-6 text-[#00B8E6]" />
+                  <div className="w-12 h-12 bg-white/8 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Icon className="w-6 h-6 text-white/70" />
                   </div>
                   <div>
                     <h3 className="font-bold text-white text-lg">{value.title}</h3>

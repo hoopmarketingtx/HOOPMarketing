@@ -88,7 +88,7 @@ function WebsiteCard({ site, index }) {
         <span className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
         <div className="flex-1 ml-2 bg-white/8 rounded-full px-3 py-1 flex items-center justify-between">
           <span className="text-white/30 text-[11px] font-mono truncate">{site.url}</span>
-          <ArrowUpRight className="w-3.5 h-3.5 text-white/20 group-hover:text-[#00B8E6] transition-colors duration-300 flex-shrink-0 ml-2" />
+          <ArrowUpRight className="w-3.5 h-3.5 text-white/20 group-hover:text-white transition-colors duration-300 flex-shrink-0 ml-2" />
         </div>
       </div>
       {/* Screenshot preview */}
@@ -105,10 +105,10 @@ function WebsiteCard({ site, index }) {
       {/* Label row */}
       <div className="px-4 py-3 flex items-center justify-between">
         <div>
-          <span className="text-[#00B8E6] text-[10px] font-semibold uppercase tracking-wider">{site.category}</span>
+          <span className="text-white/60 text-[10px] font-semibold uppercase tracking-wider">{site.category}</span>
           <h3 className="text-white font-bold text-base mt-0.5">{site.title}</h3>
         </div>
-        <div className="w-8 h-8 rounded-full bg-white/10 group-hover:bg-[#00B8E6] flex items-center justify-center transition-colors duration-300 flex-shrink-0">
+        <div className="w-8 h-8 rounded-full bg-white/10 group-hover:bg-white/25 flex items-center justify-center transition-colors duration-300 flex-shrink-0">
           <ArrowUpRight className="w-4 h-4 text-white" />
         </div>
       </div>
@@ -167,7 +167,7 @@ function ProjectModal({ project, onClose }) {
     >
       <div className="flex-shrink-0 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-white/10 px-4 md:px-6 py-4 flex items-center justify-between">
         <div>
-          <span className="text-[#00B8E6] text-xs font-semibold uppercase tracking-wider">{project.category}</span>
+          <span className="text-white/60 text-xs font-semibold uppercase tracking-wider">{project.category}</span>
           <h2 className="text-lg md:text-2xl font-bold text-white mt-0.5">{project.title}</h2>
         </div>
         <button
@@ -185,7 +185,7 @@ function ProjectModal({ project, onClose }) {
             onClick={() => setActivePage(i)}
             className={`px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium transition-all whitespace-nowrap flex-shrink-0 ${
               activePage === i
-                ? 'bg-[#00B8E6] text-white'
+                ? 'bg-white text-black'
                 : 'bg-white/10 text-white/60 hover:bg-white/20'
             }`}
           >
@@ -241,11 +241,11 @@ export default function Portfolio() {
             className="flex flex-col md:flex-row md:items-end md:justify-between mb-10"
           >
             <div>
-              <span className="text-[#00B8E6] font-semibold tracking-wider uppercase text-sm">Our Work</span>
+              <span className="text-white/60 font-semibold tracking-wider uppercase text-sm">Our Work</span>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-4 tracking-tight">
                 Results That
                 <br />
-                <span className="bg-gradient-to-r from-[#00B8E6] to-[#1F4E5F] bg-clip-text text-transparent">Speak Loud</span>
+                <span className="text-white">Speak Loud</span>
               </h2>
             </div>
             <p className="text-xl text-white/60 max-w-md mt-6 md:mt-0">
@@ -275,7 +275,7 @@ export default function Portfolio() {
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
                   <div className="flex items-end justify-between">
                     <div>
-                      <span className="text-[#00B8E6] text-sm font-medium tracking-wider uppercase">
+                      <span className="text-white/60 text-sm font-medium tracking-wider uppercase">
                         {project.category}
                       </span>
                       <h3 className="text-2xl md:text-3xl font-bold text-white mt-2">
@@ -283,7 +283,7 @@ export default function Portfolio() {
                       </h3>
                     </div>
                     {project.expandable && (
-                      <div className="w-12 h-12 bg-gradient-to-r from-[#00B8E6] to-[#1F4E5F] rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 flex-shrink-0">
+                      <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 flex-shrink-0">
                         <ArrowUpRight className="w-6 h-6 text-white" />
                       </div>
                     )}

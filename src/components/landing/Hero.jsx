@@ -105,7 +105,7 @@ function InstagramSlideshow() {
         <div className="flex items-center gap-2 px-4 py-3 bg-[#111] border-b border-white/10">
           <Instagram className="w-5 h-5 text-[#E1306C]" />
           <span className="text-white/80 text-sm font-semibold tracking-wide">@hoopmarketingtx</span>
-          <span className="ml-auto w-2 h-2 bg-[#00B8E6] rounded-full animate-pulse" />
+          <span className="ml-auto w-2 h-2 bg-white rounded-full animate-pulse" />
         </div>
 
         {/* Post tabs */}
@@ -177,14 +177,8 @@ function InstagramSlideshow() {
 export default function Hero({ smooth, contentOpacity }) {
   return (
     <section className="relative min-h-screen flex items-center">
-      {/* Static background blobs — clipped to this section */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-20 w-96 h-96 bg-[#00B8E6]/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-20 left-20 w-64 h-64 bg-[#00B8E6]/10 rounded-full blur-[100px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00B8E6]/8 rounded-full blur-[180px]" />
-        <div className="absolute top-10 left-1/3 w-72 h-72 bg-purple-500/10 rounded-full blur-[110px]" />
-        <div className="absolute bottom-10 right-1/3 w-80 h-80 bg-teal-500/8 rounded-full blur-[130px]" />
-      </div>
+      {/* Background — no colored orbs; ambient rings handled by Home.jsx layer */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" />
       {/* OrbitRings lives OUTSIDE the clipping container so rings can expand
           freely past the section boundary, fading out as the user scrolls. */}
       <OrbitRings smooth={smooth} />
@@ -202,20 +196,20 @@ export default function Hero({ smooth, contentOpacity }) {
               transition={{ delay: 0.2 }}
               className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full mb-8"
             >
-              <span className="w-2 h-2 bg-[#00B8E6] rounded-full animate-pulse" />
+              <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
               <span className="text-white/70 text-sm tracking-wide">Serving North DFW &amp; Surrounding Areas</span>
             </motion.div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[0.95] tracking-tight mb-8">
               We Don't Do
               <br />
-              <span className="bg-gradient-to-r from-[#00B8E6] to-[#1F4E5F] bg-clip-text text-transparent">Ordinary.</span>
+              <span className="text-white">Ordinary.</span>
             </h1>
 
             <p className="text-xl text-white/60 max-w-lg mb-4 leading-relaxed">
               HOOP Marketing &amp; Graphic Design builds bold brands and aggressive marketing systems that drive real growth—without the hassle.
             </p>
-            <p className="text-lg text-[#00B8E6]/80 font-medium max-w-lg mb-12 italic">
+            <p className="text-lg text-white/50 font-medium max-w-lg mb-12 italic">
               We'll jump through the hoops for you.
             </p>
 
@@ -223,7 +217,7 @@ export default function Hero({ smooth, contentOpacity }) {
               <Button 
                 size="lg"
                 onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-gradient-to-r from-[#00B8E6] to-[#1F4E5F] hover:opacity-90 text-white px-8 py-6 text-lg rounded-full group"
+                className="bg-white hover:bg-white/90 text-black px-8 py-6 text-lg rounded-full group"
               >
                 Start Your Project
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />

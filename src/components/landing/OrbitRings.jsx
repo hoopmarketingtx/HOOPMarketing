@@ -80,7 +80,7 @@ export default function OrbitRings({ smooth }) {
             className="absolute"
             style={{ inset: '15.7%', animation: !scrolled ? 'idleY 7s linear infinite, idleZ2 14s linear infinite' : 'none' }}
           >
-            <div className="absolute inset-0 rounded-full" style={{ border: '1.5px solid rgba(255,255,255,0.42)', boxShadow: '0 0 12px 4px rgba(0,184,230,0.25), inset 0 0 12px 4px rgba(0,184,230,0.1)' }} />
+            <div className="absolute inset-0 rounded-full" style={{ border: '1.5px solid rgba(255,255,255,0.42)', boxShadow: '0 0 12px 4px rgba(255,255,255,0.12), inset 0 0 12px 4px rgba(255,255,255,0.06)' }} />
           </div>
 
           {/* Ring 3 — 31.4% inset (220/700) */}

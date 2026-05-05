@@ -206,9 +206,9 @@ function CategoryDropdown({ selected, onChange }) {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#00B8E6]/40 text-white/70 hover:text-white transition-all duration-300 rounded-xl px-5 py-3 text-sm font-medium"
+        className="flex items-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/25 text-white/70 hover:text-white transition-all duration-300 rounded-xl px-5 py-3 text-sm font-medium"
       >
-        <SlidersHorizontal className="w-4 h-4 text-[#00B8E6]" />
+        <SlidersHorizontal className="w-4 h-4 text-white/50" />
         {selected === 'All' ? 'Filter by category' : selected}
         <motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.25 }}>
           <ChevronDown className="w-4 h-4" />
@@ -230,12 +230,12 @@ function CategoryDropdown({ selected, onChange }) {
                   onClick={() => { onChange(cat); setOpen(false); }}
                   className={`w-full text-left px-5 py-2.5 text-sm transition-colors duration-200 flex items-center gap-2 ${
                     selected === cat
-                      ? 'text-[#00B8E6] bg-[#00B8E6]/10 font-semibold'
+                      ? 'text-white bg-white/10 font-semibold'
                       : 'text-white/60 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   {cat !== 'All' && (
-                    <span className={`w-1.5 h-1.5 rounded-full ${selected === cat ? 'bg-[#00B8E6]' : 'bg-white/20'}`} />
+                    <span className={`w-1.5 h-1.5 rounded-full ${selected === cat ? 'bg-white' : 'bg-white/20'}`} />
                   )}
                   {cat}
                 </button>
@@ -252,7 +252,7 @@ const categoryColors = {
   Strategy: 'bg-purple-500/10 text-purple-400',
   'Social Media': 'bg-[#E1306C]/10 text-[#E1306C]',
   Tips: 'bg-green-500/10 text-green-400',
-  Branding: 'bg-[#00B8E6]/10 text-[#00B8E6]',
+  Branding: 'bg-white/10 text-white/70',
   'Paid Ads': 'bg-orange-500/10 text-orange-400',
   Content: 'bg-yellow-500/10 text-yellow-400',
 };
@@ -263,7 +263,7 @@ function PostCard({ post, index, onOpen }) {
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1], delay: index * 0.06 }}
-      className="group flex flex-col bg-white/5 border border-white/10 hover:border-[#00B8E6]/40 hover:bg-white/[0.07] rounded-2xl transition-colors duration-300 cursor-pointer"
+      className="group flex flex-col bg-white/5 border border-white/10 hover:border-white/25 hover:bg-white/[0.07] rounded-2xl transition-colors duration-300 cursor-pointer"
       onClick={onOpen}
     >
       <div className="flex flex-col p-7 flex-1">
@@ -278,7 +278,7 @@ function PostCard({ post, index, onOpen }) {
           </span>
         </div>
 
-        <h2 className="text-white group-hover:text-[#00B8E6] font-bold text-lg leading-snug mb-3 transition-colors duration-300">
+        <h2 className="text-white group-hover:text-white font-bold text-lg leading-snug mb-3 transition-colors duration-300">
           {post.title}
         </h2>
 
@@ -286,7 +286,7 @@ function PostCard({ post, index, onOpen }) {
 
         <div className="flex items-center justify-between mt-6 pt-5 border-t border-white/10">
           <span className="text-white/30 text-xs">{post.date}</span>
-          <span className="flex items-center gap-1 text-[#00B8E6] text-sm font-semibold group-hover:gap-2 transition-all duration-200">
+          <span className="flex items-center gap-1 text-white/60 text-sm font-semibold group-hover:gap-2 transition-all duration-200">
             Read more <ChevronDown className="w-4 h-4 -rotate-90" />
           </span>
         </div>
@@ -312,7 +312,7 @@ function PostDetail({ post, onClose }) {
         Back to articles
       </button>
 
-      <div className="bg-white/5 border border-[#00B8E6]/30 rounded-2xl p-8 md:p-12">
+      <div className="bg-white/5 border border-white/15 rounded-2xl p-8 md:p-12">
         <div className="flex items-center gap-3 mb-6">
           <span className={`inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full ${categoryColors[post.category] ?? 'bg-white/10 text-white/60'}`}>
             <Tag className="w-3 h-3" />
@@ -335,7 +335,7 @@ function PostDetail({ post, onClose }) {
         <div className="grid md:grid-cols-3 gap-10">
           {post.content.map((section) => (
             <div key={section.heading}>
-              <h3 className="text-[#00B8E6] font-semibold text-base mb-3">{section.heading}</h3>
+              <h3 className="text-white/80 font-semibold text-base mb-3">{section.heading}</h3>
               <p className="text-white/60 text-sm leading-relaxed">{section.body}</p>
             </div>
           ))}
@@ -374,20 +374,20 @@ export default function Blog() {
     <div className="min-h-screen bg-[#0a0a0a]">
       {/* Hero */}
       <section className="relative pt-40 pb-20 overflow-hidden">
-        <div className="absolute top-20 right-20 w-96 h-96 bg-[#00B8E6]/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-20 right-20 w-96 h-96 bg-white/[0.03] rounded-full blur-[120px] pointer-events-none" />
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="text-[#00B8E6] font-semibold tracking-wider uppercase text-sm">
+            <span className="text-white/60 font-semibold tracking-wider uppercase text-sm">
               HOOP Marketing
             </span>
             <h1 className="text-5xl md:text-6xl font-bold text-white mt-4 tracking-tight leading-[1.05]">
               The Blog.
               <br />
-              <span className="bg-gradient-to-r from-[#00B8E6] to-[#1F4E5F] bg-clip-text text-transparent">
+              <span className="text-white">
                 Real talk. Real results.
               </span>
             </h1>
@@ -417,7 +417,7 @@ export default function Blog() {
                 <div className="flex items-center justify-between mb-10">
                   <p className="text-white/30 text-sm">
                     {filteredPosts.length} {filteredPosts.length === 1 ? 'article' : 'articles'}
-                    {selectedCategory !== 'All' && <span> in <span className="text-[#00B8E6]">{selectedCategory}</span></span>}
+                    {selectedCategory !== 'All' && <span> in <span className="text-white">{selectedCategory}</span></span>}
                   </p>
                   <CategoryDropdown selected={selectedCategory} onChange={handleCategoryChange} />
                 </div>

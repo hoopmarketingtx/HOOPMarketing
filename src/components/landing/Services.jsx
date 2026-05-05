@@ -9,7 +9,7 @@ const services = [
     title: "Social Media Growth & Management",
     description: "We manage your social media presence from start to finish—creating content, engaging with your audience, and helping your business stay top-of-mind. All packages include content creation, posting, and daily account management. Ad spend is included and managed by our team, with the ability to scale at any time.",
     cardDescription: "Consistent content and daily engagement to grow your brand and attract customers.",
-    color: "from-[#00B8E6] to-[#1F4E5F]",
+    color: "from-white/30 to-white/10",
     tiers: [
       {
         name: "Foundation",
@@ -69,7 +69,7 @@ const services = [
     title: "Bespoke Website Builds",
     description: "We don't just build websites — we create conversion-focused systems that help your business generate leads, build trust, and grow online. All websites are fully custom, mobile-optimized, and built with performance and user experience in mind.",
     cardDescription: "We don't just build websites — we create conversion-focused systems that help your business generate leads, build trust, and grow online.",
-    color: "from-purple-500 to-pink-500",
+    color: "from-white/30 to-white/10",
     tiers: [
       {
         name: "Foundation",
@@ -131,7 +131,7 @@ const services = [
     title: "Paid Ad Execution",
     description: "Predictable, scalable lead generation through targeted advertising. We create, manage, and optimize paid ad campaigns designed to generate real customers for your business. Ad spend is included and managed by our team — additional budget can be added at any time to increase reach and results.",
     cardDescription: "Predictable, scalable lead generation through targeted advertising. We create, manage, and optimize paid ad campaigns designed to generate real customers for your business.",
-    color: "from-amber-500 to-yellow-500",
+    color: "from-white/30 to-white/10",
     tiers: [
       {
         name: "Foundation",
@@ -164,7 +164,7 @@ const services = [
     icon: Palette,
     title: "Print Media Design",
     description: "Bold, tactile print materials that make your brand impossible to throw away — from business cards to large-format.",
-    color: "from-rose-500 to-red-500",
+    color: "from-white/30 to-white/10",
     singleTier: {
       name: "Design Services",
       price: "Starting at $49",
@@ -263,7 +263,7 @@ function ServiceModal({ service, onClose, onSelectPackage }) {
             </button>
           )}
           <div>
-            <span className="text-[#00B8E6] text-xs font-semibold uppercase tracking-wider">
+            <span className="text-white/60 text-xs font-semibold uppercase tracking-wider">
               {designStep === 'form' ? 'Request a Design' : designStep === 'website' ? 'Website Brief' : 'Pricing'}
             </span>
             <h2 className="text-xl md:text-3xl font-bold text-white mt-0.5">{service.title}</h2>
@@ -286,7 +286,7 @@ function ServiceModal({ service, onClose, onSelectPackage }) {
                     onClick={() => setPrintType(type)}
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                       printType === type
-                        ? 'bg-[#00B8E6] text-white'
+                        ? 'bg-white text-black'
                         : 'bg-white/10 text-white/60 hover:bg-white/20 hover:text-white'
                     }`}
                   >
@@ -303,13 +303,13 @@ function ServiceModal({ service, onClose, onSelectPackage }) {
                 value={printDetails}
                 onChange={(e) => setPrintDetails(e.target.value)}
                 placeholder="Colors, dimensions, any specific text, inspiration, etc."
-                className="w-full bg-white/5 border border-white/10 text-white placeholder:text-white/30 rounded-xl px-4 py-3 text-sm min-h-[120px] resize-none focus:outline-none focus:border-[#00B8E6]/50"
+                className="w-full bg-white/5 border border-white/10 text-white placeholder:text-white/30 rounded-xl px-4 py-3 text-sm min-h-[120px] resize-none focus:outline-none focus:border-white/30"
               />
             </div>
             <button
               onClick={handleDesignContinue}
               disabled={!printType}
-              className="w-full py-3 rounded-2xl font-semibold text-sm bg-[#00B8E6] text-white hover:bg-[#00A0CC] transition-all duration-300 disabled:opacity-40"
+              className="w-full py-3 rounded-2xl font-semibold text-sm bg-white text-black hover:bg-white/90 transition-all duration-300 disabled:opacity-40"
             >
               Continue to Contact Form
             </button>
@@ -327,7 +327,7 @@ function ServiceModal({ service, onClose, onSelectPackage }) {
                     onClick={() => setWebsiteGoal(goal)}
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                       websiteGoal === goal
-                        ? 'bg-[#00B8E6] text-white'
+                        ? 'bg-white text-black'
                         : 'bg-white/10 text-white/60 hover:bg-white/20 hover:text-white'
                     }`}
                   >
@@ -349,7 +349,7 @@ function ServiceModal({ service, onClose, onSelectPackage }) {
                     )}
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                       websitePages.includes(page)
-                        ? 'bg-[#00B8E6] text-white'
+                        ? 'bg-white text-black'
                         : 'bg-white/10 text-white/60 hover:bg-white/20 hover:text-white'
                     }`}
                   >
@@ -366,13 +366,13 @@ function ServiceModal({ service, onClose, onSelectPackage }) {
                 value={websiteDetails}
                 onChange={(e) => setWebsiteDetails(e.target.value)}
                 placeholder="Existing website, branding assets, competitors you like, timeline, etc."
-                className="w-full bg-white/5 border border-white/10 text-white placeholder:text-white/30 rounded-xl px-4 py-3 text-sm min-h-[120px] resize-none focus:outline-none focus:border-[#00B8E6]/50"
+                className="w-full bg-white/5 border border-white/10 text-white placeholder:text-white/30 rounded-xl px-4 py-3 text-sm min-h-[120px] resize-none focus:outline-none focus:border-white/30"
               />
             </div>
             <button
               onClick={handleWebsiteContinue}
               disabled={!websiteGoal}
-              className="w-full py-3 rounded-2xl font-semibold text-sm bg-[#00B8E6] text-white hover:bg-[#00A0CC] transition-all duration-300 disabled:opacity-40"
+              className="w-full py-3 rounded-2xl font-semibold text-sm bg-white text-black hover:bg-white/90 transition-all duration-300 disabled:opacity-40"
             >
               Continue to Contact Form
             </button>
@@ -386,7 +386,7 @@ function ServiceModal({ service, onClose, onSelectPackage }) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="relative rounded-3xl p-8 flex flex-col bg-gradient-to-b from-[#00B8E6]/20 to-[#1F4E5F]/20 border border-[#00B8E6]/50"
+              className={`relative rounded-3xl p-8 flex flex-col bg-gradient-to-b from-white/10 to-white/5 border border-white/30`}
             >
               <h3 className="text-xl font-bold text-white mb-2">{service.singleTier.name}</h3>
               <div className="flex items-end gap-1 mb-6">
@@ -395,14 +395,14 @@ function ServiceModal({ service, onClose, onSelectPackage }) {
               <ul className="space-y-3 mb-8">
                 {service.singleTier.features.map((feat) => (
                   <li key={feat} className="flex items-start gap-3 text-sm text-white/70">
-                    <Check className="w-4 h-4 text-[#00B8E6] flex-shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-white/60 flex-shrink-0 mt-0.5" />
                     {feat}
                   </li>
                 ))}
               </ul>
               <button
                 onClick={() => setDesignStep('form')}
-                className="w-full py-3 rounded-2xl font-semibold text-sm bg-[#00B8E6] text-white hover:bg-[#00A0CC] transition-all duration-300"
+                className="w-full py-3 rounded-2xl font-semibold text-sm bg-white text-black hover:bg-white/90 transition-all duration-300"
               >
                 Request a Design
               </button>
@@ -418,7 +418,7 @@ function ServiceModal({ service, onClose, onSelectPackage }) {
               transition={{ duration: 0.4 }}
               className={`relative rounded-3xl p-7 flex flex-col ${
                 tier.featured
-                  ? 'bg-gradient-to-b from-[#00B8E6]/20 to-[#1F4E5F]/20 border border-[#00B8E6]/50'
+                  ? 'bg-gradient-to-b from-white/10 to-white/5 border border-white/30'
                   : 'bg-white/5 border border-white/10'
               }`}
             >
@@ -436,13 +436,13 @@ function ServiceModal({ service, onClose, onSelectPackage }) {
               <ul className="space-y-3 flex-1">
                 {tier.features.map((feat) => (
                   <li key={feat} className="flex items-start gap-3 text-sm text-white/70">
-                    <Check className="w-4 h-4 text-[#00B8E6] flex-shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-white/60 flex-shrink-0 mt-0.5" />
                     {feat}
                   </li>
                 ))}
               </ul>
               {tier.outcome && (
-                <p className="mt-5 text-xs text-[#00B8E6]/80 italic border-t border-white/10 pt-4">
+                <p className="mt-5 text-xs text-white/50 italic border-t border-white/10 pt-4">
                   {tier.outcome}
                 </p>
               )}
@@ -472,7 +472,7 @@ function ServiceModal({ service, onClose, onSelectPackage }) {
                 }}
                 className={`mt-8 w-full py-3 rounded-2xl font-semibold text-sm transition-all duration-300 ${
                   tier.featured
-                    ? 'bg-[#00B8E6] text-white hover:bg-[#00A0CC]'
+                    ? 'bg-white text-black hover:bg-white/90'
                     : 'bg-white/10 text-white hover:bg-white/20'
                 }`}
               >
@@ -497,11 +497,7 @@ export default function Services({ onSelectPackage }) {
   return (
     <>
       <section className="relative pt-24 pb-16 md:py-24" id="services" style={{ scrollMarginTop: '80px' }}>
-        {/* Background glow orbs */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/3 w-[700px] h-[700px] bg-[#00B8E6]/12 rounded-full blur-[180px] -translate-x-1/2 -translate-y-1/2" />
-          <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[160px] translate-x-1/4" />
-        </div>
+        {/* Background glow removed — ambient rings handled by Home.jsx layer */}
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -510,10 +506,10 @@ export default function Services({ onSelectPackage }) {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
               Services That
               <br />
-              <span className="bg-gradient-to-r from-[#00B8E6] to-[#1F4E5F] bg-clip-text text-transparent">Move Needles</span>
+              <span className="text-white">Move Needles</span>
             </h2>
             <p className="text-xl text-white/50 mt-6 max-w-2xl mx-auto">
               We don't believe in cookie-cutter solutions. Every strategy is built to dominate your specific market.
@@ -545,7 +541,7 @@ export default function Services({ onSelectPackage }) {
                   {service.cardDescription || service.description}
                 </p>
 
-                <div className="mt-6 flex items-center text-[#00B8E6] font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="mt-6 flex items-center text-white font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   View Pricing
                   <ArrowUpRight className="ml-2 w-5 h-5" />
                 </div>

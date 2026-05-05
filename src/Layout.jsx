@@ -69,8 +69,8 @@ export default function Layout({ children }) {
         }
         
         ::selection {
-          background: #00B8E6;
-          color: white;
+          background: #ffffff;
+          color: #000000;
         }
       `}</style>
 
@@ -108,7 +108,7 @@ export default function Layout({ children }) {
                 to="/Blog"
                 className={`font-medium transition-colors duration-300 ${
                   location.pathname === '/Blog'
-                    ? 'text-[#00B8E6]'
+                    ? 'text-white'
                     : 'text-white/70 hover:text-white'
                 }`}
               >
@@ -116,7 +116,7 @@ export default function Layout({ children }) {
               </Link>
               <Button
                 onClick={handleGetStarted}
-                className="bg-[#00B8E6] hover:bg-[#00B8E6]/90 text-white px-6 rounded-full"
+                className="bg-white hover:bg-white/90 text-black px-6 rounded-full"
               >
                 Get Started
               </Button>
@@ -154,13 +154,13 @@ export default function Layout({ children }) {
                 <Link
                   to="/Blog"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block w-full text-left font-medium py-2 transition-colors text-[#00B8E6] hover:text-[#00B8E6]/80"
+                  className="block w-full text-left font-medium py-2 transition-colors text-white hover:text-white/70"
                 >
                   Blog
                 </Link>
                 <Button
                   onClick={handleGetStarted}
-                  className="w-full bg-[#00B8E6] hover:bg-[#00B8E6]/90 text-white rounded-full mt-4"
+                  className="w-full bg-white hover:bg-white/90 text-black rounded-full mt-4"
                 >
                   Get Started
                 </Button>
