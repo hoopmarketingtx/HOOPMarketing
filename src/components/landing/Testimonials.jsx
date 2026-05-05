@@ -79,7 +79,7 @@ export default function Testimonials() {
               variant="outline"
               size="icon"
               onClick={prev}
-              className="w-12 h-12 rounded-full border-white/10 text-white/50 hover:border-white hover:text-white bg-transparent"
+              className="w-12 h-12 rounded-full border-white/10 text-white/50 hover:border-[#00B8E6] hover:text-[#00B8E6] bg-transparent"
             >
               <ChevronLeft className="w-5 h-5" />
             </Button>
@@ -100,7 +100,7 @@ export default function Testimonials() {
               variant="outline"
               size="icon"
               onClick={next}
-              className="w-12 h-12 rounded-full border-white/10 text-white/50 hover:border-white hover:text-white bg-transparent"
+              className="w-12 h-12 rounded-full border-white/10 text-white/50 hover:border-[#00B8E6] hover:text-[#00B8E6] bg-transparent"
             >
               <ChevronRight className="w-5 h-5" />
             </Button>

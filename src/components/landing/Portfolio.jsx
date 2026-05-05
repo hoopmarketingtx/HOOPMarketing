@@ -88,7 +88,7 @@ function WebsiteCard({ site, index }) {
         <span className="w-2.5 h-2.5 rounded-full bg-green-500/50" />
         <div className="flex-1 ml-2 bg-white/8 rounded-full px-3 py-1 flex items-center justify-between">
           <span className="text-white/30 text-[11px] font-mono truncate">{site.url}</span>
-          <ArrowUpRight className="w-3.5 h-3.5 text-white/20 group-hover:text-white transition-colors duration-300 flex-shrink-0 ml-2" />
+          <ArrowUpRight className="w-3.5 h-3.5 text-white/20 group-hover:text-[#00B8E6] transition-colors duration-300 flex-shrink-0 ml-2" />
         </div>
       </div>
       {/* Screenshot preview */}

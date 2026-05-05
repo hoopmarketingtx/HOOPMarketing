@@ -541,7 +541,7 @@ export default function Services({ onSelectPackage }) {
                   {service.cardDescription || service.description}
                 </p>
 
-                <div className="mt-6 flex items-center text-white font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="mt-6 flex items-center text-[#00B8E6] font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   View Pricing
                   <ArrowUpRight className="ml-2 w-5 h-5" />
                 </div>

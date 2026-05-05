@@ -4,8 +4,12 @@ import Layout from './Layout';
 import PageNotFound from './lib/PageNotFound';
 import Home from './pages/Home';
 
-// Blog is code-split: its JS only loads when the user navigates to /Blog
+// Code-split secondary pages
 const Blog = lazy(() => import('./pages/Blog'));
+const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+
+const Fallback = () => <div className="min-h-screen bg-[#0a0a0a]" />;
 
 export default function App() {
   return (
@@ -13,8 +17,18 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout><Home /></Layout>} />
         <Route path="/Home" element={<Layout><Home /></Layout>} />
+        <Route path="/services" element={
+          <Suspense fallback={<Fallback />}>
+            <Layout><ServicesPage /></Layout>
+          </Suspense>
+        } />
+        <Route path="/about" element={
+          <Suspense fallback={<Fallback />}>
+            <Layout><AboutPage /></Layout>
+          </Suspense>
+        } />
         <Route path="/Blog" element={
-          <Suspense fallback={<div className="min-h-screen bg-[#0a0a0a]" />}>
+          <Suspense fallback={<Fallback />}>
             <Layout><Blog /></Layout>
           </Suspense>
         } />

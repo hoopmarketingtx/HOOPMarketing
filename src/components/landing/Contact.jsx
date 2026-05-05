@@ -112,7 +112,7 @@ export default function Contact({ selectedPackage, onClearPackage }) {
             <div className="mt-12">
               <a
                 href="mailto:hoopmarketingtx@gmail.com"
-                className="inline-flex items-center gap-4 text-white/80 group rounded-2xl px-4 py-3 -mx-4 transition-all duration-300 hover:bg-white/5 hover:text-white"
+                className="inline-flex items-center gap-4 text-white/80 group rounded-2xl px-4 py-3 -mx-4 transition-all duration-300 hover:bg-white/5 hover:text-[#00B8E6]"
               >
                   <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:bg-white/15 group-hover:scale-110">
                   <Mail className="w-5 h-5 text-white/70" />

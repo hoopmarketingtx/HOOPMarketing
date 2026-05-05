@@ -7,10 +7,10 @@ import { Button } from '@/components/ui/button';
 const headerLogo = '/assets/HOOP-Abstract-Logo.webp';
 
 const navLinks = [
-  { name: 'Services', href: '#services' },
-  { name: 'Work', href: '#work' },
-  { name: 'Testimonials', href: '#testimonials' },
-  { name: 'About', href: '#about' },
+  { name: 'Services', href: '/services', type: 'link' },
+  { name: 'Portfolio', href: '#work', type: 'scroll' },
+  { name: 'Testimonials', href: '#testimonials', type: 'scroll' },
+  { name: 'About', href: '/about', type: 'link' },
 ];
 
 export default function Layout({ children }) {
@@ -95,21 +95,35 @@ export default function Layout({ children }) {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <button
-                  key={link.name}
-                  onClick={() => navigateToSection(link.href)}
-                  className="text-white/70 hover:text-white font-medium transition-colors duration-300"
-                >
-                  {link.name}
-                </button>
-              ))}
+              {navLinks.map((link) =>
+                link.type === 'link' ? (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    className={`font-medium transition-colors duration-300 ${
+                      location.pathname === link.href
+                        ? 'text-[#00B8E6]'
+                        : 'text-white/70 hover:text-[#00B8E6]'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <button
+                    key={link.name}
+                    onClick={() => navigateToSection(link.href)}
+                    className="text-white/70 hover:text-[#00B8E6] font-medium transition-colors duration-300"
+                  >
+                    {link.name}
+                  </button>
+                )
+              )}
               <Link
                 to="/Blog"
                 className={`font-medium transition-colors duration-300 ${
                   location.pathname === '/Blog'
-                    ? 'text-white'
-                    : 'text-white/70 hover:text-white'
+                    ? 'text-[#00B8E6]'
+                    : 'text-white/70 hover:text-[#00B8E6]'
                 }`}
               >
                 Blog
@@ -142,19 +156,30 @@ export default function Layout({ children }) {
               className="md:hidden bg-[#0a0a0a] border-t border-white/10"
             >
               <div className="px-6 py-6 space-y-4">
-                {navLinks.map((link) => (
-                  <button
-                    key={link.name}
-                    onClick={() => navigateToSection(link.href)}
-                    className="block w-full text-left text-white/70 hover:text-white font-medium py-2 transition-colors"
-                  >
-                    {link.name}
-                  </button>
-                ))}
+                {navLinks.map((link) =>
+                  link.type === 'link' ? (
+                    <Link
+                      key={link.name}
+                      to={link.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block w-full text-left font-medium py-2 transition-colors text-white/70 hover:text-[#00B8E6]"
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <button
+                      key={link.name}
+                      onClick={() => navigateToSection(link.href)}
+                      className="block w-full text-left text-white/70 hover:text-[#00B8E6] font-medium py-2 transition-colors"
+                    >
+                      {link.name}
+                    </button>
+                  )
+                )}
                 <Link
                   to="/Blog"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block w-full text-left font-medium py-2 transition-colors text-white hover:text-white/70"
+                  className="block w-full text-left font-medium py-2 transition-colors text-white hover:text-[#00B8E6]"
                 >
                   Blog
                 </Link>

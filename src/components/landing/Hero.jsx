@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -175,6 +176,7 @@ function InstagramSlideshow() {
 }
 
 export default function Hero({ smooth, contentOpacity }) {
+  const navigate = useNavigate();
   return (
     <section className="relative min-h-screen flex items-center">
       {/* Background — no colored orbs; ambient rings handled by Home.jsx layer */}
@@ -224,10 +226,10 @@ export default function Hero({ smooth, contentOpacity }) {
               </Button>
               <Button 
                 size="lg"
-                onClick={() => document.querySelector('#work')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-[#1a1a1a] border border-white/20 text-white hover:bg-[#222] px-8 py-6 text-lg rounded-full group"
+                onClick={() => navigate('/services')}
+                className="bg-[#1a1a1a] border border-white/20 text-white hover:bg-[#00B8E6] hover:border-[#00B8E6] px-8 py-6 text-lg rounded-full group transition-all duration-300"
               >
-                Portfolio
+                Services
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
