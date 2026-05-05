@@ -7,9 +7,9 @@ import { Button } from '@/components/ui/button';
 const headerLogo = '/assets/HOOP-Abstract-Logo.webp';
 
 const navLinks = [
-  { name: 'Services', href: '/services', type: 'link' },
   { name: 'Portfolio', href: '#work', type: 'scroll' },
   { name: 'Testimonials', href: '#testimonials', type: 'scroll' },
+  { name: 'Services', href: '/services', type: 'link' },
   { name: 'About', href: '/about', type: 'link' },
 ];
 
@@ -19,6 +19,11 @@ export default function Layout({ children }) {
   const location = useLocation();
   const navigate = useNavigate();
   const isHome = location.pathname === '/' || location.pathname === '/Home';
+
+  // Close mobile menu on any route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
 
   const handleGetStarted = () => {
     setMobileMenuOpen(false);
